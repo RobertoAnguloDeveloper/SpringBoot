@@ -9,6 +9,7 @@ import com.desarrolloweb.Ejercicio6.model.crud.UsuariosDAO;
 
 @Controller
 public class ControllerInicio {
+    
     @Autowired
     private UsuariosDAO usuariosDAO;
 
