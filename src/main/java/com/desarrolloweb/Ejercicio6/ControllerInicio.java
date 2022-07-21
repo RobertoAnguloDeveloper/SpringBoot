@@ -5,17 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.desarrolloweb.Ejercicio6.model.crud.UsuariosDAO;
+import com.desarrolloweb.Ejercicio6.model.servicios.UsuarioService;
 
 @Controller
 public class ControllerInicio {
-    
+
     @Autowired
-    private UsuariosDAO usuariosDAO;
+    private UsuarioService usuario;
 
     @GetMapping("/")
     public String start(Model model) {
-        var usuarios = usuariosDAO.findAll();
+        var usuarios = usuario.listar();
         model.addAttribute("usuarios", usuarios);
         return "index";
     }
