@@ -95,6 +95,7 @@
     padding: 4px;
 }
 
+
 .barra-elementos:hover:not([href="index.php"],[name="userMenu"]){
     background-color: #ffc200;
     box-shadow: 0px 0px 5px #000;
@@ -104,22 +105,22 @@
     padding: 4px;
 }
 
-.barra-elementos img[id="home-icon"] {
+#home-icon{
     width: 25px;
-    margin-top:-6px;
-    margin-bottom: -12px;
-    text-decoration: none;
-    list-style-type: none;
-    text-shadow: 0px 0px 0px #000;
-    color: rgb(0, 0, 0);
+    margin-bottom: -8px;
+    padding: unset;
+    padding-bottom: 5px;
 }
 
-.barra-elementos img[id="home-icon"]:hover{
-    background-color: #ffc200;
-    box-shadow: 0px 0px 5px #000;
-    color: #fff;
-    border-radius: 30px;
-    text-shadow: 1.5px 1px 5px #000;
+#home-icon:hover{
+    /*hover unset*/
+    background-color: unset;
+    box-shadow: unset;
+    color: unset;
+    border-radius: unset;
+    text-shadow: unset;
+    padding: unset;
+    padding-bottom: 5px;
 }
 
 .barra-elementos img[id="login-icon"] {
