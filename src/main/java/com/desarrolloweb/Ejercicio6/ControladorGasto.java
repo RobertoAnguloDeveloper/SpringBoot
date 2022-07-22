@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.desarrolloweb.Ejercicio6.model.entidades.Gasto;
 import com.desarrolloweb.Ejercicio6.model.servicios.ServicioGasto;
 
+
 @Controller
 public class ControladorGasto {
 
@@ -20,7 +21,7 @@ public class ControladorGasto {
     public String index(Model model) {
         var gastos = gastoService.listar();
         model.addAttribute("gastos", gastos);
-        return "usuario/index";
+        return "gasto/index";
     }
 
     /*th:ref to gasto/agregar.html */

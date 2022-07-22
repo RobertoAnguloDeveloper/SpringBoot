@@ -15,6 +15,10 @@ public class Gasto implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+    // /*ForeignKey JPA Spring boot*/
+    // @ManyToOne(fetch = FetchType.LAZY)
+    // @JoinColumn(name = "usuario_id")
+    // private Usuario usuario;
     private String usuario_id;
     private String fecha;
     private String valor_total_sin_iva;

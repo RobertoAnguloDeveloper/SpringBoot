@@ -10,20 +10,28 @@
     <h1>LISTAR</h1>
     <table>
         <tr>
-            <th>CEDULA</th>
-            <th>CLAVE</th>
-            <th>NOMBRE</th>
-            <th>TELEFONO</th>
-            <th>EMAIL</th>
+            <th>ID</th>
+            <th>USUARIO ID</th>
+            <th>FECHA</th>
+            <th>VALOR TOTAL SIN IVA</th>
+            <th>IVA TOTAL</th>
+            <th>VALOR TOTAL CON IVA</th>
+            <th>NOMBRE DEL GASTO</th>
+            <th>LUGAR</th>
+            <th>DESCRIPCION</th>
         </tr>
-        <tr th:each="usuario : ${usuarios}">
-            <td th:text="${usuario.cedula}"></td>
-            <td th:text="${usuario.clave}"></td>
-            <td th:text="${usuario.nombre}"></td>
-            <td th:text="${usuario.telefono}"></td>
-            <td th:text="${usuario.email}"></td>
+        <tr th:each="gasto : ${gastos}">
+            <td th:text="${gasto.id}"></td>
+            <td th:text="${gasto.usuario_id}"></td>
+            <td th:text="${gasto.fecha}"></td>
+            <td th:text="${gasto.valor_total_sin_iva}"></td>
+            <td th:text="${gasto.iva_total}"></td>
+            <td th:text="${gasto.valor_total_con_iva}"></td>
+            <td th:text="${gasto.nombre_gasto}"></td>
+            <td th:text="${gasto.lugar}"></td>
+            <td th:text="${gasto.descripcion}"></td>
         </tr>
     </table>
-    <a th:href="@{/usuario/index}">Regresar USUARIO</a>
+    <a th:href="@{/gasto/index}">Regresar gasto</a>
 </body>
 </html>
