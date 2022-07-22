@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.desarrolloweb.Ejercicio6.model.entidades.Gasto;
 import com.desarrolloweb.Ejercicio6.model.servicios.ServicioGasto;
@@ -30,7 +31,7 @@ public class ControladorGasto {
     }
 
     /*th:ref to gasto/agregar.html */
-    @GetMapping("/gasto/agregar")
+    @PostMapping("/gasto/agregar")
     public String agregar(Model model) {
         var gasto = new Gasto();
         model.addAttribute("gasto", gasto);
@@ -46,7 +47,7 @@ public class ControladorGasto {
     }
 
     /*th:ref to gasto/editar.html */
-    @GetMapping("/gasto/editar")
+    @PostMapping("/gasto/editar")
     public String editar(Model model) {
         var gasto = new Gasto();
         model.addAttribute("gasto", gasto);
