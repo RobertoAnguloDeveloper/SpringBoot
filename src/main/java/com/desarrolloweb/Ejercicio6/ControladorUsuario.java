@@ -30,6 +30,14 @@ public class ControladorUsuario {
         return "datosEstudiante";
     }
 
+    /*th:ref to usuario/login.html */
+    @GetMapping("/usuario/login")
+    public String login(Model model) {
+        var usuario = new Usuario();
+        model.addAttribute("usuario", usuario);
+        return "/usuario/login";
+    }
+
     /*th:ref to usuario/iniciar_sesion.html */
     @PostMapping("/usuario/iniciar_sesion")
     public String iniciarSesion(Model model) {

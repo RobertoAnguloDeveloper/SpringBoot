@@ -158,14 +158,12 @@
 
     function userController(){
         var iframe = document.getElementById("formsFrame");
-        var name = document.activeElement.name;
-        iframe.src = "controller/ControladorUsuario.php?"+name;
+        iframe.src = "usuario/login";
     }
 
     function gastoController(){
         var iframe = document.getElementById("formsFrame");
-        var name = document.activeElement.name;
-        iframe.src = "controller/ControladorGasto.php?"+name;
+        iframe.src = "/gasto/";
     }
 
     function show(id){
