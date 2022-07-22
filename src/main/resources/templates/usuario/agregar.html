@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar usuario</title>
+</head>
+<body>
+    <h1>DATOS DE USUARIO</h1>
+    <a th:href="@{/usuario/index}">Regresar USUARIO</a>
+    <form th:action="@{/agregar}" method="post" th:object="${usuario}">
+        <div class="form-group">
+            <label for="cedula">Cedula</label>
+            <input type="text" class="form-control" id="cedula" placeholder="Cedula" th:field="*{cedula}">
+        </div>
+        <div class="form-group">
+            <label for="clave">Clave</label>
+            <input type="text" class="form-control" id="clave" placeholder="Clave" th:field="*{clave}">
+        </div>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre" th:field="*{nombre}">
+        </div>
+        <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="text" class="form-control" id="telefono" placeholder="Telefono" th:field="*{telefono}">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" placeholder="Email" th:field="*{email}">
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</body>
+</html>

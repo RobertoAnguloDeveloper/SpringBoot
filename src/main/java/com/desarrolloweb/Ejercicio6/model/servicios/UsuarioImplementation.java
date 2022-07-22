@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.desarrolloweb.Ejercicio6.model.crud.UsuarioDAO;
+import com.desarrolloweb.Ejercicio6.model.crud.CrudUsuario;
 import com.desarrolloweb.Ejercicio6.model.entidades.Usuario;
 
 @Service
-public class UsuarioImplementation implements UsuarioService{
+public class UsuarioImplementation implements ServicioUsuario{
 
     @Autowired
-    private UsuarioDAO usuarioDAO;
+    private CrudUsuario usuarioDAO;
 
     @Override
     @Transactional

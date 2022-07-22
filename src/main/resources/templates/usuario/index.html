@@ -18,8 +18,14 @@
         <h1>&lt; DESARROLLO WEB &gt;</h1>
     </header>
 
-    <h1>MENU PRINCIPAL</h1>
-    <a th:href="@{/usuario/index}">USUARIO</a>
+    <h1>MENU USUARIO</h1>
+    <a th:href="@{/}">HOME</a>
+    <ul>
+        <li><a th:href="@{/usuario/agregar}">AGREGAR</a></li>
+        <li><a th:href="@{/usuario/listar}">LISTAR</a></li>
+    </ul>
+    
+    
 
     <footer id="footer">
         <h1>&lt; DESARROLLO WEB &gt;</h1>
