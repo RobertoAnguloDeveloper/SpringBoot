@@ -27,7 +27,6 @@
             <th>TELEFONO</th>
             <th>EMAIL</th>
         </tr>
-
         <tr th:each="usuario : ${usuarios}">
             <td th:text="${usuario.cedula}"></td>
             <td th:text="${usuario.clave}"></td>
@@ -36,6 +35,7 @@
             <td th:text="${usuario.email}"></td>
         </tr>
     </table>
+    <a th:href="@{/agregar}">Agregar</a>
     <!-- <div class="container p-3 my-3 bg-primary text-white">
         <div class="container">
             <h1>PRUEBA CRUD</h1>

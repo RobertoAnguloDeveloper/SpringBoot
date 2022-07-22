@@ -6,30 +6,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.desarrolloweb.Ejercicio6.model.crud.UsuariosDAO;
-import com.desarrolloweb.Ejercicio6.model.entidades.Usuarios;
+import com.desarrolloweb.Ejercicio6.model.crud.UsuarioDAO;
+import com.desarrolloweb.Ejercicio6.model.entidades.Usuario;
 
 @Service
 public class UsuarioImplementation implements UsuarioService{
 
     @Autowired
-    private UsuariosDAO usuarioDAO;
+    private UsuarioDAO usuarioDAO;
 
     @Override
     @Transactional
-    public boolean agregar(Usuarios usuario) {
+    public boolean agregar(Usuario usuario) {
         return usuarioDAO.save(usuario) != null;
     }
 
     @Override
     @Transactional
-    public Usuarios buscar(String id) {
+    public Usuario buscar(String id) {
         return usuarioDAO.findById(id).orElse(null);
     }
 
     @Override
     @Transactional
-    public boolean editar(Usuarios usuario) {
+    public boolean editar(Usuario usuario) {
         if(usuarioDAO.save(usuario) != null) {
             return true;
         }else {
@@ -50,9 +50,9 @@ public class UsuarioImplementation implements UsuarioService{
 
     @Override
     @Transactional(readOnly = true)
-    public List<Usuarios> listar() {
+    public List<Usuario> listar() {
         usuarioDAO.findAll();
-        return (List<Usuarios>) usuarioDAO.findAll();
+        return (List<Usuario>) usuarioDAO.findAll();
     }
 
 }

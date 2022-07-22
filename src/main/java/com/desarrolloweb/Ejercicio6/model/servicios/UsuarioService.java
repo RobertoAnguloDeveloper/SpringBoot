@@ -2,12 +2,12 @@ package com.desarrolloweb.Ejercicio6.model.servicios;
 
 import java.util.List;
 
-import com.desarrolloweb.Ejercicio6.model.entidades.Usuarios;
+import com.desarrolloweb.Ejercicio6.model.entidades.Usuario;
 
 public interface UsuarioService {
-    public boolean agregar(Usuarios usuario);
-    public Usuarios buscar(String id);
-    public boolean editar(Usuarios usuario);
+    public boolean agregar(Usuario usuario);
+    public Usuario buscar(String id);
+    public boolean editar(Usuario usuario);
     public boolean eliminar(String id);
-    public List<Usuarios> listar();
+    public List<Usuario> listar();
 }
