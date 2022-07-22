@@ -15,6 +15,9 @@
 }
 
 #header {
+    width: 100%;
+    top: 0;
+    position: fixed;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
     background-color: #ffe600;
     background-image: linear-gradient(#ffe600, #ffc200);
@@ -49,9 +52,8 @@
     position: fixed;
     right: 1%;
     width: 170px;
-    margin-top: 1%;
-    
-    padding: 5px;
+    margin-top: 5%;
+    padding: 1px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
     background-color: #ffe600;
     color: #fff;
@@ -86,13 +88,10 @@
 
 .barra-elementos:not([href="index.php"],[name="userMenu"]) {
     display: inline-block;
-    margin-right: 5px;
-    margin-left: 5px;
     text-decoration: none;
     list-style-type: none;
     text-shadow: 0px 0px 0px #000;
     color: rgb(0, 0, 0);
-    padding: 4px;
 }
 
 
@@ -102,25 +101,39 @@
     color: #fff;
     border-radius: 30px;
     text-shadow: 1.5px 1px 5px #000;
-    padding: 4px;
 }
 
 #home-icon{
     width: 25px;
-    margin-bottom: -8px;
     padding: unset;
-    padding-bottom: 5px;
+    margin-top: 1px;
+    margin-left: 8px;
+    margin-right: 10%;
 }
 
 #home-icon:hover{
-    /*hover unset*/
-    background-color: unset;
-    box-shadow: unset;
-    color: unset;
-    border-radius: unset;
-    text-shadow: unset;
-    padding: unset;
-    padding-bottom: 5px;
+    background-color: #ffc200;
+    box-shadow: 0px 0px 5px #000;
+    color: #fff;
+    border-radius: 30px;
+    text-shadow: 1.5px 1px 5px #000;
+}
+
+#sesion{
+    position: absolute;
+    top: 20%;
+    text-decoration: none;
+    list-style-type: none;
+    text-shadow: 0px 0px 0px #000;
+    color: rgb(0, 0, 0);
+}
+
+#sesion:hover{
+    background-color: #ffc200;
+    box-shadow: 0px 0px 5px #000;
+    color: #fff;
+    border-radius: 5px;
+    text-shadow: 1.5px 1px 5px #000;
 }
 
 .barra-elementos img[id="login-icon"] {
@@ -163,7 +176,6 @@
     color: rgb(0, 17, 255);
     text-shadow: unset;
     font-weight: unset;
-    
 }
 
 #adminCuentas{
@@ -195,7 +207,6 @@
 }
 
 #studentData {
-    margin: 9%;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 21px;
@@ -253,14 +264,30 @@
 .contenedorLogin{
     display: block;
     border: 2px solid black;
-    width: 35%;
-    height: 63%;
+    width: 20%;
+    height: 45%;
     padding: 2%;
     box-sizing: border-box;
     background-color: rgba(255, 230, 0,0.697);
     position: absolute;
     border-radius: 10px;
-    top: 50%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#loginBtn{
+    width: 95px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#siginBtn{
+    width: 85px;
+    position: absolute;
+    top: 70%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
@@ -279,6 +306,11 @@
     text-decoration: underline;
     text-align: unset;
     font-family: unset;
+    position: absolute;
+    width: 100%;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 #recoveryPass:hover{
@@ -485,7 +517,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
     color: #fff;
     text-shadow: 2.5px 1.5px 6px #000;
-    font-size: 185%;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
 }
@@ -603,10 +635,13 @@ input[name="guardar"]{
     background-color:#ffffff;
 }
 
-#formsFrame {
-    width: 75%;
-    height: 70vh;
-    margin-top: 2.6%;
+.cuadroInfo {
+    padding: 2%;
+    width: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     border-radius: 40px;
     box-shadow: 0px 0px 10px #000;
     background-color: rgba(255, 255, 255, 0.545);

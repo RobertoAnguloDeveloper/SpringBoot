@@ -16,12 +16,12 @@
     <header id="header">
         <h1>&lt; DESARROLLO WEB &gt;</h1>
     </header>
-
     <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
-    <ul id="barra" class="menu-barra">
-        <a class="barra-elementos" th:href="@{/}"><img id="home-icon" src="/img/home.png"></a>
+
+    <ul class="menu-barra">
+        <a th:href="@{/}"><img id="home-icon" src="/img/home.png"></a>
         <a href="#" class="barra-elementos" id="userMenu" name="userMenu" onclick="clicks('userMenu');"><img id="login-icon" src="/img/login.png"></a>
-        <a href="#" class="barra-elementos" id="sesion" name="usuarios" onclick="userController();">INICIAR SESION</a>
+        <a th:href="@{/usuario}" id="sesion" name="usuarios">INICIAR SESION</a>
         <a href="#" class="barra-elementos" id="gastos" name="gastos">GASTOS</a>
     </ul>
     
@@ -36,7 +36,19 @@
         <hr>
     </ul>
 
-    <center><iframe id="formsFrame" style="display: none;" src="" frameborder="1"></iframe></center>
+    <div id="studentData" class="cuadroInfo">
+        <h3>EJERCICIO 6</h3>
+        <br>
+        <h3>Integrantes de CIPA</h3>
+        <p>ROBERTO CARLOS ANGULO TINOCO COD:7502010009</p>
+        <p>VINCENT ARTURO ROLONG MARQUEZ COD:7502010020</p>
+        <br>
+        <h3>Tutor</h3>
+        <p>JHON CARLOS ARRIETA ARRIETA</p>
+        <br>
+        <h3>Asignaturas</h3>
+        <p>DESARROLLO DE SOFTWARE WEB & BASES DE DATOS II</p>
+    </div>
 
     <footer id="footer">
         <h1>&lt; DESARROLLO WEB &gt;</h1>
@@ -56,14 +68,3 @@
     </footer>
 </body>
 </html>
-
-<script>
-    var iframe = document.getElementById("formsFrame");
-    window.onload = function() {
-        showIframe();
-        iframe.style.opacity = 0.1;
-        iframe.src = "/datosEstudiante";
-        fadeInEffect("formsFrame", 0.5);
-    }
-    
-</script>

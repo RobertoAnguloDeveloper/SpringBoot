@@ -1,33 +1,32 @@
 package com.desarrolloweb.Ejercicio6.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.desarrolloweb.Ejercicio6.modelo.entidades.Usuario;
 import com.desarrolloweb.Ejercicio6.servicios.ServicioUsuario;
 
-@Controller
+@RestController
+@RequestMapping("/usuario")
 public class ControladorUsuario {
 
     @Autowired
     private ServicioUsuario usuarioService;
 
-    @GetMapping("/")
+    @GetMapping("/usuario")
     public String start(Model model) {
         var usuarios = usuarioService.listar();
         model.addAttribute("usuarios", usuarios);
-        
         return "index";
     }
 
     /*th:ref to /datosEstudiante.html */
     @GetMapping("/datosEstudiante")
     public String datosEstudiante(Model model) {
-        var usuario = new Usuario();
-        model.addAttribute("usuario", usuario);
         return "datosEstudiante";
     }
 
@@ -37,6 +36,13 @@ public class ControladorUsuario {
         var usuario = new Usuario();
         model.addAttribute("usuario", usuario);
         return "/usuario/login";
+    }
+
+    @PostMapping("/login")
+    public String login(Usuario usuario) {
+        String cedula = usuario.getCedula();
+        usuario = usuarioService.buscar(cedula);
+        return "redirect:/usuario/logeado";
     }
 
     /*th:ref to usuario/iniciar_sesion.html */

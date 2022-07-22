@@ -157,8 +157,7 @@
     }
 
     function userController(){
-        var iframe = document.getElementById("formsFrame");
-        iframe.src = "usuario/login";
+        window.location.href = "usuario/login";
     }
 
     function gastoController(){

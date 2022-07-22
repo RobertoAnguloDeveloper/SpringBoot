@@ -9,7 +9,18 @@
     <title>Log in</title>
 </head>
 <body>
-    <form th:action="@{/}" method="post" id="log-in" class="contenedorLogin" th:object="${usuario}">
+    <header id="header">
+        <h1>&lt; DESARROLLO WEB &gt;</h1>
+    </header>
+    <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
+    <ul id="barra" class="menu-barra">
+        <a class="barra-elementos" th:href="@{/}"><img id="home-icon" src="/img/home.png"></a>
+        <a href="#" class="barra-elementos" id="userMenu" name="userMenu" onclick="clicks('userMenu');"><img id="login-icon" src="/img/login.png"></a>
+        <a th:href="@{/usuario/login}" class="barra-elementos" id="sesion" name="usuarios">INICIAR SESION</a>
+        <a href="#" class="barra-elementos" id="gastos" name="gastos">GASTOS</a>
+    </ul>
+
+    <form th:action="@{/login}" method="post" id="log-in" class="contenedorLogin" th:object="${usuario}">
         <a id="btn-x" onclick="hideElement('log-in');">x</a>
         <table>
             <tr>
@@ -19,15 +30,15 @@
             </tr>
             <tr>
                 <center>
-                    <input type="text" name="cedula" placeholder="Introduzca su Cédula" required th:field="*{cedula}">
-                    <input type="password" name="clave" placeholder="Introduzca su Contraseña" th:field="*{clave}">
+                    <input type="text" name="cedula" placeholder="Introduzca su Cédula" required>
+                    <input type="password" name="clave" placeholder="Introduzca su Contraseña">
                 </center>
             </tr>
             <tr>
                 <td>
                     <center>
-                        <input type="submit" name="sesion" value="Iniciar sesión">
-                        <input type="submit" name="registrar" value="Registrarse">
+                        <input type="submit" id="loginBtn" name="sesion" value="Iniciar sesión">
+                        <input type="submit" id="siginBtn" name="registrar" value="Registrarse">
                         <br>
 
                         <input type="submit" id="recoveryPass" name="recoveryPass" value="Olvidaste tu contraseña?"><a  href="login.php?recoveryPass=active"></a>
@@ -36,5 +47,9 @@
             </tr>
         </table>
     </form>
+
+    <footer id="footer">
+        <h1>&lt; DESARROLLO WEB &gt;</h1>
+    </footer>
 </body>
 </html>
