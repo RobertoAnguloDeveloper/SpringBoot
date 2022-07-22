@@ -15,13 +15,6 @@ public class ControladorGasto {
     @Autowired
     private ServicioGasto gastoService;
 
-    @GetMapping("/")
-    public String start(Model model) {
-        var gastos = gastoService.listar();
-        model.addAttribute("gastos", gastos);
-        return "index";
-    }
-
     /*th:ref to gasto/index.html */
     @GetMapping("/gasto/index")
     public String index(Model model) {
