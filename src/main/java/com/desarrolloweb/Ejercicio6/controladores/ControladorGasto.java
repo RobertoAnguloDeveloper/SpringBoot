@@ -1,4 +1,4 @@
-package com.desarrolloweb.Ejercicio6;
+package com.desarrolloweb.Ejercicio6.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.desarrolloweb.Ejercicio6.model.entidades.Gasto;
-import com.desarrolloweb.Ejercicio6.model.servicios.ServicioGasto;
+import com.desarrolloweb.Ejercicio6.modelo.entidades.Gasto;
+import com.desarrolloweb.Ejercicio6.servicios.ServicioGasto;
 
 
 @Controller

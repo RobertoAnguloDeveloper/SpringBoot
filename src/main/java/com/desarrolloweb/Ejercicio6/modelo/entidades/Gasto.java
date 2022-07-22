@@ -1,4 +1,4 @@
-package com.desarrolloweb.Ejercicio6.model.entidades;
+package com.desarrolloweb.Ejercicio6.modelo.entidades;
 
 import java.io.Serializable;
 

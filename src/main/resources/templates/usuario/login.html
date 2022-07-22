@@ -9,7 +9,7 @@
     <title>Log in</title>
 </head>
 <body>
-    <form method="post" id="log-in" class="contenedorLogin">
+    <form th:action="@{/}" method="post" id="log-in" class="contenedorLogin" th:object="${usuario}">
         <a id="btn-x" onclick="hideElement('log-in');">x</a>
         <table>
             <tr>
@@ -19,8 +19,8 @@
             </tr>
             <tr>
                 <center>
-                    <input type="text" name="cedula" placeholder="Introduzca su Cédula" required>
-                    <input type="password" name="clave" placeholder="Introduzca su Contraseña">
+                    <input type="text" name="cedula" placeholder="Introduzca su Cédula" required th:field="*{cedula}">
+                    <input type="password" name="clave" placeholder="Introduzca su Contraseña" th:field="*{clave}">
                 </center>
             </tr>
             <tr>
@@ -29,7 +29,6 @@
                         <input type="submit" name="sesion" value="Iniciar sesión">
                         <input type="submit" name="registrar" value="Registrarse">
                         <br>
-                        <!-- Make an a tag a submit button -->
 
                         <input type="submit" id="recoveryPass" name="recoveryPass" value="Olvidaste tu contraseña?"><a  href="login.php?recoveryPass=active"></a>
                     </center>

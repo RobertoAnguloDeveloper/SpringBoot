@@ -1,4 +1,4 @@
-package com.desarrolloweb.Ejercicio6.model.servicios;
+package com.desarrolloweb.Ejercicio6.servicios;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.desarrolloweb.Ejercicio6.model.crud.CrudGasto;
-import com.desarrolloweb.Ejercicio6.model.entidades.Gasto;
+import com.desarrolloweb.Ejercicio6.modelo.crud.CrudGasto;
+import com.desarrolloweb.Ejercicio6.modelo.entidades.Gasto;
 
 @Service
 public class GastoImplementation implements ServicioGasto{

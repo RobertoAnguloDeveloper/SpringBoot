@@ -1,8 +1,8 @@
-package com.desarrolloweb.Ejercicio6.model.servicios;
+package com.desarrolloweb.Ejercicio6.servicios;
 
 import java.util.List;
 
-import com.desarrolloweb.Ejercicio6.model.entidades.Gasto;
+import com.desarrolloweb.Ejercicio6.modelo.entidades.Gasto;
 
 public interface ServicioGasto {
     public boolean agregar(Gasto gasto);

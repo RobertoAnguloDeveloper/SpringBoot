@@ -1,4 +1,4 @@
-package com.desarrolloweb.Ejercicio6;
+package com.desarrolloweb.Ejercicio6.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.desarrolloweb.Ejercicio6.model.entidades.Usuario;
-import com.desarrolloweb.Ejercicio6.model.servicios.ServicioUsuario;
+import com.desarrolloweb.Ejercicio6.modelo.entidades.Usuario;
+import com.desarrolloweb.Ejercicio6.servicios.ServicioUsuario;
 
 @Controller
 public class ControladorUsuario {
@@ -19,6 +19,7 @@ public class ControladorUsuario {
     public String start(Model model) {
         var usuarios = usuarioService.listar();
         model.addAttribute("usuarios", usuarios);
+        
         return "index";
     }
 
