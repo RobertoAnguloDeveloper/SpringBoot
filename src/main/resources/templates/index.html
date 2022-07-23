@@ -17,16 +17,21 @@
         <h1>&lt; DESARROLLO WEB &gt;</h1>
     </header>
     <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
-
-    <ul class="menu-barra">
-        <a th:href="@{/}"><img id="home-icon" src="/img/home.png"></a>
-        <a href="#" class="barra-elementos" id="userMenu" name="userMenu" onclick="clicks('userMenu');"><img id="login-icon" src="/img/login.png"></a>
-        <a th:href="@{/usuario}" id="sesion" name="usuarios">INICIAR SESION</a>
-        <a href="#" class="barra-elementos" id="gastos" name="gastos">GASTOS</a>
-    </ul>
     
+    <a id="homeBtn" th:href="@{/}"><img id="home-icon" src="/img/home.png"></a>
+
+    <div id="menu-ppal-container" class="menu-container">
+        <h1 class="tituloForm">MENU PRINCIPAL</h1>
+        <div id="menu-ppal" class="menu">
+            <ul>
+                <a th:href="@{/usuario/}">|USUARIO|</a>
+            </ul>
+        </div>
+    </div>
+
     <ul id="logData" class="popup">
-        <li>BIENVENID@ <p id="nombreUsuario" th:text="@{usuario.nombre}"></p></li>
+        <li>BIENVENID@ <p id="nombreUsuario" th:text="@{usuario.nombre}"></p>
+        </li>
         <hr>
         <li><a href="#" name="datosCuenta" onclick="userController();">Datos de la cuenta</a></li>
         <hr>
@@ -57,14 +62,15 @@
 
 </html>
 
-    <!-- <ul id="barra" class="menu-barra">
+<!-- <ul id="barra" class="menu-barra">
         <li><a th:href="@{/usuario/index}">USUARIO</a></li>
         <li><a th:href="@{/gasto/index}">GASTO</a></li>
     </ul> -->
-    
 
-    <footer id="footer">
-        <h1>&lt; DESARROLLO WEB &gt;</h1>
-    </footer>
+
+<footer id="footer">
+    <h1>&lt; DESARROLLO WEB &gt;</h1>
+</footer>
 </body>
+
 </html>

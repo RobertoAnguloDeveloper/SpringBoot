@@ -15,13 +15,19 @@
     <header id="header">
         <h1>&lt; DESARROLLO WEB &gt;</h1>
     </header>
+    <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
 
-    <h1 class>MENU USUARIO</h1>
-    <a th:href="@{/}">HOME</a>
-    <ul>
-        <li><a th:href="@{/usuario/agregar}">AGREGAR</a></li>
-        <li><a th:href="@{/usuario/listar}">LISTAR</a></li>
-    </ul>
+    <div id="menu-index-user-container" class="menu-container">
+        <h1 class="tituloForm">MENU USUARIO</h1>
+        <a th:href="@{/}"><img id="home-icon" src="/img/home.png"></a>
+        <div id="menu-index-user" class="menu">
+            <ul>
+                <a th:href="@{/usuario/}">|INICIAR SESION|</a>
+                <a th:href="@{/usuario/agregar}">|REGISTRARSE|</a>
+            </ul>
+        </div>        
+    </div>
+    
     
     
 
