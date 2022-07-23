@@ -107,6 +107,7 @@
     position: absolute;
     top: 18.5%;
     left: 27.5%;
+    z-index: 100;
     background-color: #ffc200;
     box-shadow: 0px 0px 5px #000;
     border-radius: 30px;
@@ -114,6 +115,7 @@
 }
 
 #home-icon{
+    display: inline-block;
     width: 45px;
     padding: unset;
     margin-left: 8px;
@@ -146,9 +148,11 @@
 }
 
 .menu-container{
+    display: inline-block;
     position: absolute;
-    top: 10%;
-    left: 50%;
+    top: 21.6%;
+    left: 370px;
+    z-index: 100;
     transform: translate(-50%, -50%);
     border-radius: 5px;
     padding: unset;
@@ -165,13 +169,18 @@
     height: 48px;
     position: absolute;
     top: 21.6%;
-    left: 37%;
+    left: 570px;
     transform: translate(-50%, -50%);
 }
 
 .menu{
+    display: inline-block;
     margin-left: 40px;
     padding: 2px;
+}
+
+.menu ul{
+    margin-left: -60px;
 }
 
 #menu-ppal a{
@@ -196,20 +205,22 @@
 }
 
 #menu-ppal ul{
+    display: inline-block;
     margin-left: -60px;
 }
 
-
 #menu-index-user-container{
-    width: 350px;
+    width: 280px;
     position: absolute;
-    top: 20%;
-    left: 50%;
+    top: 21.6%;
+    left: 40.5%;
     transform: translate(-50%, -50%);
 }
 
 #menu-index-user a{
     display: inline-block;
+    margin-left: -15px;
+    margin-right: 10px;
     text-decoration: none;
     list-style-type: none;
     text-shadow: 0px 0px 0px #000;
@@ -227,37 +238,43 @@
     text-shadow: 1.5px 1px 5px #000;
 }
 
-#menu-index-user ul{
-    margin-left: -30px;
-    padding-bottom: 2px;
+#menu-index-user-container h1{
+    margin-left: -120px;
 }
 
 #menu-agregar-container{
+    width: 375px;
     position: absolute;
-    top: 10%;
-    left: 50%;
+    top: 21.6%;
+    left: 44%;
     transform: translate(-50%, -50%);
-    width: 430px;
     border-radius: 5px;
     padding: unset;
     padding-left: unset;
     margin-left: unset;
 }
 
+#menu-agregar-container h1{
+    margin-left: -230px;
+}
+
 #menu-agregar ul{
-    margin-left: 40px;
+    margin-left: -25px;
     margin-top: -25px;
     padding: 2px;
 }
 
 #menu-agregar a{
     display: inline-block;
-    margin-right: unset;
-    padding: 1px;
+    margin-left: -15px;
+    margin-right: 10px;
     text-decoration: none;
     list-style-type: none;
     text-shadow: 0px 0px 0px #000;
     color: rgb(0, 0, 0);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+    font-size: 15px;
+    font-weight: bold;
 }
 
 #menu-agregar a:hover{
@@ -779,7 +796,7 @@ input[name="guardar"]{
     padding: 2%;
     width: 40%;
     position: absolute;
-    top: 50%;
+    top: 350px;
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 40px;

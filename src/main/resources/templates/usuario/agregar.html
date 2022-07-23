@@ -15,10 +15,10 @@
         <h1>&lt; DESARROLLO WEB &gt;</h1>
     </header>
     <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
-    
+    <a id="homeBtn" th:href="@{/}"><img id="home-icon" src="/img/home.png"></a>
     <div id="menu-agregar-container" class="menu-container">
         <h1 class="tituloForm">MENU USUARIO</h1>
-        <a th:href="@{/}"><img id="home-icon" src="/img/home.png"></a>
+        
         <div id="menu-agregar" class="menu">
             <ul>
                 <a th:href="@{usuario/agregar}">|AGREGAR|</a>
@@ -30,7 +30,6 @@
         </div>
     </div>
 
-    <a class="backBtn" th:href="@{/usuario/}">Regresar USUARIO</a>
     <form th:action="@{/agregar}" th:object="${usuario}" method="post" id="sign-in" class="contenedorSignin">
         <a id="btn-x" onclick="hideElement('sign-in');">x</a>
         <table>
