@@ -45,6 +45,7 @@
 }
 
 
+
 .menu-barra:not([class="barra-elementos"]) {
     /*Arrange in front*/
     z-index: 1;
@@ -104,9 +105,9 @@
 }
 
 #homeBtn img{
+    margin-top: 100px;
+    margin-left: 100px;
     position: absolute;
-    top: 18.5%;
-    left: 27.5%;
     z-index: 100;
     background-color: #ffc200;
     box-shadow: 0px 0px 5px #000;
@@ -117,7 +118,6 @@
 #home-icon{
     display: inline-block;
     width: 45px;
-    padding: unset;
     margin-left: 8px;
     margin-right: 10%;
 }
@@ -148,45 +148,48 @@
 }
 
 .menu-container{
-    display: inline-block;
-    position: absolute;
-    top: 21.6%;
-    left: 370px;
+    margin-top: 100px;
+    margin-left: 150px;
+    position: absolute;    
     z-index: 100;
-    transform: translate(-50%, -50%);
     border-radius: 5px;
-    padding: unset;
-    padding-left: unset;
-    margin-left: unset;
     background-color: #ffe600;
     background-image: linear-gradient(#ffe600, #ffc200);
     box-shadow: 0px 0px 5px #000;
     color: rgb(0, 0, 0);
 }
 
-#menu-ppal-container{
-    width: 170px;
-    height: 48px;
-    position: absolute;
-    top: 21.6%;
-    left: 570px;
-    transform: translate(-50%, -50%);
+.menu-container h1{
+    display: inline-block;
+    margin-left: 5px;
 }
 
 .menu{
     display: inline-block;
-    margin-left: 40px;
     padding: 2px;
 }
 
 .menu ul{
-    margin-left: -60px;
+    display: inline-block;
+    list-style-type: none;
+    padding-left: unset;
+}
+
+.menu a{
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+}
+
+#menu-ppal-container{
+    width: 125px;
+    height: 48px;
+    padding: 2px;
 }
 
 #menu-ppal a{
     display: inline-block;
-    padding: 1px;
-    margin-left: -19px;
+    
     text-decoration: none;
     list-style-type: none;
     text-shadow: 0px 0px 0px #000;
@@ -206,26 +209,19 @@
 
 #menu-ppal ul{
     display: inline-block;
-    margin-left: -60px;
 }
 
 #menu-index-user-container{
-    width: 280px;
-    position: absolute;
-    top: 21.6%;
-    left: 40.5%;
-    transform: translate(-50%, -50%);
+    width: 412px;
+    
 }
 
 #menu-index-user a{
     display: inline-block;
-    margin-left: -15px;
-    margin-right: 10px;
     text-decoration: none;
     list-style-type: none;
     text-shadow: 0px 0px 0px #000;
     color: rgb(0, 0, 0);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
     font-size: 15px;
     font-weight: bold;
 }
@@ -238,30 +234,8 @@
     text-shadow: 1.5px 1px 5px #000;
 }
 
-#menu-index-user-container h1{
-    margin-left: -120px;
-}
-
 #menu-agregar-container{
-    width: 375px;
-    position: absolute;
-    top: 21.6%;
-    left: 44%;
-    transform: translate(-50%, -50%);
-    border-radius: 5px;
-    padding: unset;
-    padding-left: unset;
-    margin-left: unset;
-}
-
-#menu-agregar-container h1{
-    margin-left: -230px;
-}
-
-#menu-agregar ul{
-    margin-left: -25px;
-    margin-top: -25px;
-    padding: 2px;
+    width: 400px;
 }
 
 #menu-agregar a{
@@ -322,9 +296,13 @@
 }
 
 #nombreUsuario{
+    display: inline-block;
+    margin-left: 10px;
     color: rgb(0, 17, 255);
-    text-shadow: unset;
-    font-weight: unset;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 0.5px 1px 1px rgb(255, 255, 255);
 }
 
 #adminCuentas{
@@ -411,79 +389,66 @@
 }
 
 .contenedorLogin{
-    display: block;
+    display: inline-block;
     border: 2px solid black;
-    width: 20%;
-    height: 45%;
-    padding: 2%;
+    width: 21%;
+    height: 260px;
+    padding: 1%;
     box-sizing: border-box;
     background-color: rgba(255, 230, 0,0.697);
-    position: absolute;
     border-radius: 10px;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+}
+
+.contenedorLogin h2{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+.contenedorLogin input[type="submit"]{
+    margin-top: 15px;
+}
+
+#logBtns {
+    margin-top: 55px;
+}
+
+#log-in{
+    position: absolute;
+    top: 41%;
+    left: 15%;
+    transform: translate(-50%, -50%);
 }
 
 #loginBtn{
     width: 95px;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 5px;
 }
 
 #siginBtn{
-    width: 85px;
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    width: 90px;
+    display: inline-block;
+    padding: 5px;
 }
 
-.backBtn{
-    width: 85px;
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-
-#recoveryPass{
+#recoveryPass {
     /* Hide design of a button */
+    display: block;
+    margin-top: 10px;
     background: none;
     border: none;
     cursor: pointer;
     color: #000;
-    font-size: unset;
-    font-weight: unset;
-    text-shadow: unset;
-    padding: unset;
-    margin: unset;
     text-decoration: underline;
-    text-align: unset;
-    font-family: unset;
-    position: absolute;
-    width: 100%;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    text-decoration-color: #ff0000;
+    font-weight: bold;
+    
 }
 
 #recoveryPass:hover{
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: unset;
-    font-size: unset;
-    font-weight: unset;
-    text-shadow: unset;
-    box-shadow: unset;
-    padding: unset;
-    margin: unset;
-    text-decoration: underline;
-    text-align: unset;
-    font-family: unset;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 0px 5px rgb(0, 0, 0);
 }
 
 .contenedorSignin{
@@ -706,15 +671,12 @@ input:not([type="submit"]) {
 }
 
 input[type="submit"], input[type="button"], input[type="reset"]{
-    display: block;
+    display: inline-block;
+    
     border: 1px solid rgb(0, 0, 0);
     color: rgb(0, 0, 0);
     border-radius: 4px;
-    margin-top: 5px;
-    padding: 5px;
-    width: 100%;
     box-sizing: border-box;
-    font-size: 80%;
     font-weight: bold;
 }
 
@@ -796,7 +758,7 @@ input[name="guardar"]{
     padding: 2%;
     width: 40%;
     position: absolute;
-    top: 350px;
+    top: 320px;
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 40px;

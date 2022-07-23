@@ -16,13 +16,36 @@ public class ControladorUsuario {
 
     @Autowired
     private ServicioUsuario usuarioService;
+    private Usuario usuario;
 
-    // @GetMapping("/usuario")
-    // public String start(Model model) {
-    //     var usuarios = usuarioService.listar();
-    //     model.addAttribute("usuarios", usuarios);
-    //     return "index";
-    // }
+    @RequestMapping("/")
+    public String index() {
+        return "/";
+    }
+
+    @GetMapping("/usuario/")
+    public String recargaIndexUsuario(Model model) {
+        model.addAttribute("usuario", usuario);
+        return "usuario/index";
+    }
+
+    @PostMapping("/login")
+    public String login(Usuario usuario, Model model) {
+        
+        String cedula = usuario.getCedula();
+        String clave = usuario.getClave();
+
+        Usuario usuarioEncontrado = usuarioService.buscar(cedula);
+
+        if (usuarioEncontrado != null && usuarioEncontrado.getClave().equals(clave)) {
+            model.addAttribute("usuario", usuarioEncontrado);
+            this.usuario = usuarioEncontrado;
+            return "/usuario/index";
+        } else {
+            model.addAttribute("error", "Usuario no encontrado");
+            return "redirect:/";
+        }
+    }
 
     // /*th:ref to /datosEstudiante.html */
     // @GetMapping("/datosEstudiante")
@@ -38,12 +61,7 @@ public class ControladorUsuario {
     //     return "/usuario/login";
     // }
 
-    // @PostMapping("/login")
-    // public String login(Usuario usuario) {
-    //     String cedula = usuario.getCedula();
-    //     usuario = usuarioService.buscar(cedula);
-    //     return "redirect:/usuario/logeado";
-    // }
+    
 
     // /*th:ref to usuario/iniciar_sesion.html */
     // @PostMapping("/usuario/iniciar_sesion")

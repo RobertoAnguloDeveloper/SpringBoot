@@ -17,7 +17,7 @@
     </header>
     <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
 
-    <a id="homeBtn" th:href="@{/usuario/}"><img id="home-icon" src="/img/home.png"></a>
+    <a id="homeBtn" th:href="@{#}"><img id="home-icon" src="/img/home.png"></a>
 
     <div id="menu-index-user-container" class="menu-container">
         <h1 class="tituloForm">BIENVENID@</h1><p id="nombreUsuario" th:text="${usuario.nombre}"></p>
@@ -27,7 +27,7 @@
             <ul>
                 <form th:action="@{/logout}"></form>
                 <a th:href="@{/usuario/editar}">|DATOS DE CUENTA|</a>
-                <a th:href="@{/usuario/editar}">|GASTOS|</a>
+                <a th:href="@{/usuario/editar}">|DATOS DE CUENTA|</a>
                 <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
                 </form>
             </ul>
