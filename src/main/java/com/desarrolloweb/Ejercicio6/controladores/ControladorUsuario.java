@@ -17,50 +17,55 @@ public class ControladorUsuario {
     @Autowired
     private ServicioUsuario usuarioService;
     private Usuario usuario;
+    private String rol;
 
     @RequestMapping("/")
     public String index() {
+        this.rol = "";
         return "/";
     }
 
     @GetMapping("/usuario/")
     public String recargaIndexUsuario(Model model) {
         model.addAttribute("usuario", usuario);
-        return "usuario/index";
+        model.addAttribute("rol", rol);
+        if(rol.equals("admin")){
+            return "/usuario/admin";
+        }else{
+            return "/usuario/index";
+        }
     }
 
     @PostMapping("/login")
     public String login(Usuario usuario, Model model) {
-        
         String cedula = usuario.getCedula();
-        String clave = usuario.getClave();
-
         Usuario usuarioEncontrado = usuarioService.buscar(cedula);
 
-        if (usuarioEncontrado != null && usuarioEncontrado.getClave().equals(clave)) {
-            model.addAttribute("usuario", usuarioEncontrado);
-            this.usuario = usuarioEncontrado;
-            return "/usuario/index";
-        } else {
-            model.addAttribute("error", "Usuario no encontrado");
-            return "redirect:/";
+        switch(usuarioService.verificarRol(usuario)){
+            case "admin":
+                this.usuario = usuarioEncontrado;
+                this.rol = "admin";
+                model.addAttribute("usuario", usuarioEncontrado);
+                return "/usuario/admin";
+            case "usuario":
+                this.usuario = usuarioEncontrado;
+                this.rol = "usuario";
+                model.addAttribute("usuario", usuarioEncontrado);
+                return "/usuario/index";
+            case "error":
+                return "error";
+            default:
+                return "redirect:/";
         }
     }
+
+
 
     // /*th:ref to /datosEstudiante.html */
     // @GetMapping("/datosEstudiante")
     // public String datosEstudiante(Model model) {
     //     return "datosEstudiante";
     // }
-
-    // /*th:ref to usuario/login.html */
-    // @GetMapping("/usuario/login")
-    // public String login(Model model) {
-    //     var usuario = new Usuario();
-    //     model.addAttribute("usuario", usuario);
-    //     return "/usuario/login";
-    // }
-
     
 
     // /*th:ref to usuario/iniciar_sesion.html */

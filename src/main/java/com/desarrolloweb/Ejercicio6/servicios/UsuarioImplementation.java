@@ -29,6 +29,27 @@ public class UsuarioImplementation implements ServicioUsuario{
 
     @Override
     @Transactional
+    public boolean verificarUsuario(Usuario usuario) {
+        return usuarioDAO.existsById(usuario.getCedula());
+    }
+
+    @Override
+    @Transactional
+    public String verificarRol(Usuario usuario) {
+        if(verificarUsuario(usuario)){
+            if(usuario.getCedula().equals("73202647") && usuario.getClave().equals("73202647")){
+                return "admin";
+            }else{
+                return "usuario";
+            }
+        }else{
+            return "error";
+        }
+    }
+
+
+    @Override
+    @Transactional
     public boolean editar(Usuario usuario) {
         if(usuarioDAO.save(usuario) != null) {
             return true;

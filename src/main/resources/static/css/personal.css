@@ -211,9 +211,12 @@
     display: inline-block;
 }
 
+#menu-index-user-admin-container{
+    width: 450px;
+}
+
 #menu-index-user-container{
-    width: 412px;
-    
+    width: 345px;
 }
 
 #menu-index-user a{
