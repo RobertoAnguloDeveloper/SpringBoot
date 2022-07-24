@@ -15,22 +15,10 @@
         <h1>&lt; DESARROLLO WEB &gt;</h1>
     </header>
     <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
-    <a id="homeBtn" th:href="@{/}"><img id="home-icon" src="/img/home.png"></a>
-    <div id="menu-agregar-container" class="menu-container">
-        <h1 class="tituloForm">MENU USUARIO</h1>
-        
-        <div id="menu-agregar" class="menu">
-            <ul>
-                <a th:href="@{usuario/agregar}">|AGREGAR|</a>
-                <a th:href="@{/usuario/buscar}">|BUSCAR|</a>
-                <a th:href="@{/usuario/editar}">|EDITAR|</a>
-                <a th:href="@{/usuario/eliminar}">|ELIMINAR|</a>
-                <a th:href="@{/usuario/listar}">|LISTAR|</a>
-            </ul>
-        </div>
-    </div>
 
-    <form th:action="@{/agregar}" th:object="${usuario}" method="post" id="sign-in" class="contenedorSignin">
+    <a id="homeBtn" th:href="@{/}"><img id="home-icon" src="/img/home.png"></a>
+
+    <form th:action="@{/usuario/agregar}" th:object="${usuario}" method="post" id="sign-in" class="contenedorSignin">
         <a id="btn-x" onclick="hideElement('sign-in');">x</a>
         <table>
             <tr>
@@ -38,7 +26,7 @@
             </tr>
             <tr>
                 <h2 id="regUsuario" class="tituloForm">
-                    <center>REGISTRAR USUARIO</center>
+                    <center>REGISTRE SUS DATOS</center>
                 </h2>
                 <input type="number" name="cedula" placeholder="Introduzca su Cédula" required>
                 <input type="password" name="clave" placeholder="Introduzca su Contraseña" required>
@@ -47,7 +35,7 @@
                 <input type="number" name="telefono" placeholder="Introduzca su telefono" required>
             <tr>
                 <td>
-                    <input type="submit" name="agregar" value="Guardar">
+                    <input type="submit" id="guardar" name="guardar" value="Guardar">
                     <input type="reset" name="limpiar" value="Limpiar campos">
                 </td>
             </tr>

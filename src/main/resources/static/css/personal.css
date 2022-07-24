@@ -156,7 +156,6 @@
     background-color: #ffe600;
     background-image: linear-gradient(#ffe600, #ffc200);
     box-shadow: 0px 0px 5px #000;
-    color: rgb(0, 0, 0);
 }
 
 .menu-container h1{
@@ -212,8 +211,9 @@
 }
 
 #menu-index-user-admin-container{
-    width: 450px;
+    width: 550px;
 }
+
 
 #menu-index-user-container{
     width: 345px;
@@ -223,10 +223,10 @@
     display: inline-block;
     text-decoration: none;
     list-style-type: none;
-    text-shadow: 0px 0px 0px #000;
+    text-shadow: 1px 1px 1px rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     font-size: 15px;
-    font-weight: bold;
+    
 }
 
 #menu-index-user a:hover{
@@ -432,7 +432,31 @@
 #siginBtn{
     width: 90px;
     display: inline-block;
+    color: rgb(0, 0, 0);
     padding: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+}
+
+#siginBtn{
+    text-decoration: none;
+    box-sizing: border-box;
+    border: 1px solid;
+    border-radius: 3px;
+    color: unset;
+    padding: 5.3px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+    font-size: 14px;
+    background-color: #f0eeee;
+}
+
+#siginBtn:hover{
+    background-color: #ffc200;
+    box-shadow: 0px 0px 5px #000;
+    text-shadow: 1.5px 1px 5px #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid rgb(0, 0, 0);
 }
 
 #recoveryPass {
@@ -458,37 +482,49 @@
     display: block;
     border: 2px solid black;
     width: 25%;
-    height: 50%;
+    height: 320px;
     padding: 2%;
     box-sizing: border-box;
     background-color: rgba(255, 230, 0,0.697);
     position: absolute;
     border-radius: 10px;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
 
+.contenedorSignin h2{
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
 #account{
-    position: unset;
-    top: unset;
-    left: unset;
-    transform: unset;
-    margin-top: 2.5%;
-    padding-top: 1%;
-    width: 36%;
-    height: 450px;
+    margin-top: 100px;
+    padding: 2%;
+    width: 300px;
+    height: 440px;
+}
+
+#account h2{
+    margin-top: unset;
+    margin-bottom: 15px;
+    font-size: 25px;
 }
 
 #account label{
-    color: rgb(255, 255, 255);
+    color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
-    text-shadow: 1px 1px 3px #000;
-    
+    text-shadow: 2.5px 1.5px 6px #000;
+    font-size: 15px;
+
 }
 
-#account input[type="text"], #account input[type="password"], #account input[type="email"], #account input[type="number"]{
-    margin-bottom: 3%;
+#account input[name="guardar"]{
+    width: 65px;
+}
+
+#account input[name="editar"]{
+    width: 50px;
 }
 
 #listaUsuarios{
@@ -673,9 +709,8 @@ input:not([type="submit"]) {
     box-sizing: border-box;
 }
 
-input[type="submit"], input[type="button"], input[type="reset"]{
+input[type="submit"], input[type="button"], input[type="reset"], button{
     display: inline-block;
-    
     border: 1px solid rgb(0, 0, 0);
     color: rgb(0, 0, 0);
     border-radius: 4px;
@@ -708,7 +743,13 @@ input[type="reset"]:hover {
 }
 
 input[name="guardar"]{
-    width: 100%;
+    width: 70px;
+    padding: 5px;
+}
+
+input[name="limpiar"]{
+    width: 115px;
+    padding: 5px;
 }
 
 .cuadro{

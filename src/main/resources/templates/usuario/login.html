@@ -34,14 +34,15 @@
             </tr>
             <tr>
                 <center>
-                    <input type="text" name="cedula" placeholder="Introduzca su Cédula" required>
+                    <input type="text" name="cedula" placeholder="Introduzca su Cédula">
                     <input type="password" name="clave" placeholder="Introduzca su Contraseña">
                 </center>
             </tr>
             <tr>
                 <center>
                     <input type="submit" id="loginBtn" name="sesion" value="Iniciar sesión">
-                    <input type="submit" id="siginBtn" name="registrar" value="Registrarse">
+                    
+                    <a id="siginBtn" name="registro" th:href="@{/usuario/agregar}">Registrarse</a>
 
                     <a id="recoveryPass" href="#">Olvidaste tu contraseña?</a>
                 </center>

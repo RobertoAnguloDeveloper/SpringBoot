@@ -17,23 +17,23 @@
     </header>
     <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
 
-    <a id="homeBtn" th:href="@{/usuario/}"><img id="home-icon" src="/img/home.png"></a>
+    <a id="homeBtn" th:href="@{/usuario}"><img id="home-icon" src="/img/home.png"></a>
 
-    <div id="menu-index-user-container" class="menu-container">
-        <h1 class="tituloForm">BIENVENID@</h1><p id="nombreUsuario" th:text="${usuario.nombre}"></p>
-        
-        
+    <div id="menu-index-user-container" th:style="${isAdmin}?'width: 530px':'width: 345px'"class="menu-container">
+        <h1 class="tituloForm">BIENVENID@</h1>
+        <p id="nombreUsuario" th:text="${usuario.nombre}"></p>
         <div id="menu-index-user" class="menu">
             <ul>
-                <form th:action="@{/logout}"></form>
-                <a th:href="@{/usuario/editar}">|DATOS DE CUENTA|</a>
-                <a th:href="@{/usuario/editar}">|GASTOS|</a>
+                <a th:href="@{/cuenta}">|DATOS DE CUENTA|</a>
+                <a th:style="${isAdmin}?'display:inline-block':'display:none'" th:href="@{/usuario/editar}">|ADMINISTRAR CUENTAS|</a>
+                <a th:href="@{/gastos/}">|GASTOS|</a>
                 <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
-                </form>
             </ul>
         </div>
     </div>
-   
+
+    
+
 
     <footer id="footer">
         <h1>&lt; DESARROLLO WEB &gt;</h1>

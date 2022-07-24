@@ -21,42 +21,70 @@ public class ControladorUsuario {
 
     @RequestMapping("/")
     public String index() {
-        this.rol = "";
         return "/";
     }
 
-    @GetMapping("/usuario/")
+    @RequestMapping("/usuario")
     public String recargaIndexUsuario(Model model) {
         model.addAttribute("usuario", usuario);
-        model.addAttribute("rol", rol);
-        if(rol.equals("admin")){
-            return "/usuario/admin";
-        }else{
-            return "/usuario/index";
-        }
+        model.addAttribute("isAdmin", this.rol);
+        return "/usuario/index";
+    }
+
+    @RequestMapping("/cuenta")
+    public String cuenta(Model model) {
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("isAdmin", this.rol);
+        return "/usuario/editar";
+    }
+
+    @PostMapping("/cuenta")
+    public String editarCuenta(Usuario usuario, Model model) {
+        usuario.setCedula(this.usuario.getCedula());
+        this.usuario = usuario;
+        this.usuarioService.editar(usuario);
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("isAdmin", this.rol);
+        return "/usuario/index";
     }
 
     @PostMapping("/login")
     public String login(Usuario usuario, Model model) {
-        String cedula = usuario.getCedula();
-        Usuario usuarioEncontrado = usuarioService.buscar(cedula);
+            String cedula = usuario.getCedula();
+            Usuario usuarioEncontrado = usuarioService.buscar(cedula);
+            
+            switch(usuarioService.verificarRol(usuario)){
+                case "admin":
+                    this.usuario = usuarioEncontrado;
+                    this.rol = "true";
+                    model.addAttribute("usuario", usuarioEncontrado);
+                    model.addAttribute("isAdmin", "true");
+                    return "/usuario/index";
+                case "usuario":
+                    this.usuario = usuarioEncontrado;
+                    this.rol = "false";
+                    model.addAttribute("usuario", usuarioEncontrado);
+                    model.addAttribute("isAdmin", "false");
+                    return "/usuario/index";
+                case "error":
+                    return "error";
+                default:
+                    return "redirect:/";
+            }
+    }
 
-        switch(usuarioService.verificarRol(usuario)){
-            case "admin":
-                this.usuario = usuarioEncontrado;
-                this.rol = "admin";
-                model.addAttribute("usuario", usuarioEncontrado);
-                return "/usuario/admin";
-            case "usuario":
-                this.usuario = usuarioEncontrado;
-                this.rol = "usuario";
-                model.addAttribute("usuario", usuarioEncontrado);
-                return "/usuario/index";
-            case "error":
-                return "error";
-            default:
-                return "redirect:/";
-        }
+    /*th:ref to usuario/agregar.html */
+    @GetMapping("/usuario/agregar")
+    public String agregarForm() {
+        return "usuario/agregar";
+    }
+
+    /*th:ref to usuario/agregar.html */
+    @PostMapping("/usuario/agregar")
+    public String agregar(Usuario usuario, Model model) {
+        this.usuario = usuario;
+        usuarioService.agregar(usuario);
+        return "redirect:/usuario/";
     }
 
 
@@ -108,20 +136,9 @@ public class ControladorUsuario {
     //     return "usuario/index";
     // }
 
-    /*th:ref to usuario/agregar.html */
-    @GetMapping("usuario/agregar")
-    public String agregarForm(Model model) {
-        var usuario = new Usuario();
-        model.addAttribute("usuario", usuario);
-        return "usuario/agregar";
-    }
+    
 
-    /*th:ref to usuario/agregar.html */
-    @PostMapping("/agregar")
-    public String agregar(Usuario usuario) {
-        usuarioService.agregar(usuario);
-        return "usuario/agregar";
-    }
+    
 
     // /*th:ref to usuario/buscar.html */
     // @GetMapping("/usuario/buscar")
