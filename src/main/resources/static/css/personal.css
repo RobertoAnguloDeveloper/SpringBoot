@@ -528,12 +528,11 @@
 }
 
 #listaUsuarios{
-    width: 90%;
-    height: 95%;
+    width: 950px;
     padding: 1%;
     display: block;
     position: absolute;
-    top: 51%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%,-50%);
     border: 2px solid black;

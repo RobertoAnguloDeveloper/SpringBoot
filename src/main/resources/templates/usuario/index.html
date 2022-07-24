@@ -25,7 +25,7 @@
         <div id="menu-index-user" class="menu">
             <ul>
                 <a th:href="@{/cuenta}">|DATOS DE CUENTA|</a>
-                <a th:style="${isAdmin}?'display:inline-block':'display:none'" th:href="@{/usuario/editar}">|ADMINISTRAR CUENTAS|</a>
+                <a th:href="@{/listarCuentas}" th:style="${isAdmin}?'display:inline-block':'display:none'">|ADMINISTRAR CUENTAS|</a>
                 <a th:href="@{/gastos/}">|GASTOS|</a>
                 <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
             </ul>

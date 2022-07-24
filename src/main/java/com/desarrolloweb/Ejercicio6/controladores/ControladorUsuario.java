@@ -48,6 +48,14 @@ public class ControladorUsuario {
         return "/usuario/index";
     }
 
+    @RequestMapping("/listarCuentas")
+    public String listarCuentas(Model model) {
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("isAdmin", this.rol);
+        model.addAttribute("usuarios", this.usuarioService.listar());
+        return "/usuario/listar";
+    }
+
     @PostMapping("/login")
     public String login(Usuario usuario, Model model) {
             String cedula = usuario.getCedula();
