@@ -24,7 +24,8 @@
         <div id="menu-index-user" class="menu">
             <ul>
                 <a th:href="@{/cuenta}">|DATOS DE CUENTA|</a>
-                <a th:href="@{/listarCuentas}" th:style="${isAdmin}?'display:inline-block':'display:none'">|ADMINISTRAR CUENTAS|</a>
+                <a th:href="@{/listarCuentas}" th:style="${isAdmin}?'display:inline-block':'display:none'">|ADMINISTRAR
+                    CUENTAS|</a>
                 <a th:href="@{/gastos/}">|GASTOS|</a>
                 <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
             </ul>
@@ -45,16 +46,14 @@
             </tr>
             <tr th:each="usuario, i : ${usuarios}">
                 <td th:text="${i.count}"></td>
-                <td th:id="'cedula' + ${i.index}" th:text="${i.current.cedula}" disabled></td>
-
-                <td th:id="'clave' + ${i.index}" th:text="${i.current.clave}" disabled></td>
-                <td th:id="'nombre' + ${i.index}" th:text="${i.current.nombre}" disabled></td>
-                <td th:id="'telefono' + ${i.index}" th:text="${i.current.telefono}" disabled></td>
-                <td th:id="'email' + ${i.index}" th:text="${i.current.email}" disabled></td>
-
+                <td><input type="text" th:id="'cedula' + ${i.index}" th:value="${i.current.cedula}" disabled></td>
+                <td><input type="text" th:id="'clave' + ${i.index}" th:value="${i.current.clave}" disabled></td>
+                <td><input type="text" th:id="'nombre' + ${i.index}" th:value="${i.current.nombre}" disabled></td>
+                <td><input type="text" th:id="'email' + ${i.index}" th:value="${i.current.email}" disabled></td>
+                <td><input type="text" th:id="'telefono' + ${i.index}" th:value="${i.current.telefono}" disabled></td>
                 <td>
                     <script th:inline="javascript">
-                        ids/*[[${i.index}]]*/ = ['nombre[[${i.index}]]', 'clave[[${i.index}]]', 'email[[${i.index}]]', 'telefono[[${i.index}]]'];
+                        ids[[${i.index}]] = ['nombre[[${i.index}]]', 'clave[[${i.index}]]', 'email[[${i.index}]]', 'telefono[[${i.index}]]'];
                     </script>
                     <a href='#' th:onclick="'enableInputs(ids'+${i.index}+');'"><img src='../img/edit.png'></a>
                     <a href='#' onclick="userUpdateDB(ids);"><img src='../img/save.png'></a>
