@@ -6,4 +6,5 @@ import com.desarrolloweb.Ejercicio6.modelo.entidades.Usuario;
 
 public interface CrudUsuario extends CrudRepository<Usuario, String> {
     
+    
 }

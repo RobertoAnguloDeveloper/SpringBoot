@@ -130,6 +130,26 @@
     text-shadow: 1.5px 1px 5px #000;
 }
 
+#searchBtn img{
+    width: 36px;
+    margin-top: 100px;
+    margin-left: 690px;
+    position: absolute;
+    z-index: 100;
+    background-color: #ffc200;
+    box-shadow: 0px 0px 5px #000;
+    border-radius: 30px;
+    padding: 5px;
+}
+
+#searchBtn img:hover{
+    background-color: #ffffff;
+    box-shadow: 0px 0px 5px #000;
+    color: #fff;
+    border-radius: 30px;
+    text-shadow: 1.5px 1px 5px #000;
+}
+
 #sesion{
     position: absolute;
     top: 20%;
@@ -214,7 +234,6 @@
     width: 550px;
 }
 
-
 #menu-index-user-container{
     width: 345px;
 }
@@ -260,6 +279,30 @@
     color: #fff;
     border-radius: 5px;
     text-shadow: 1.5px 1px 5px #000;
+}
+
+#busqueda-user-container{
+    width: 19%;
+    margin-left: 61%;
+    margin-top: 6.75%;
+    padding-top: unset;
+    padding-bottom: 0.3%;
+}
+
+#busqueda-user-container h1{
+    display: inline-block;
+}
+
+#busqueda-user input[type="text"]{
+    display: inline-block;
+    width: 130px;
+}
+
+#busqueda-user input[type="submit"]{
+    display: inline-block;
+    width: 60px;
+    padding: 5px;
+    margin-right: unset;
 }
 
 .barra-elementos img[id="login-icon"] {
@@ -581,9 +624,9 @@
     background-attachment: unset;
 }
 
-.tabla2 td img{
-    width: 20px;
-    height: 20px;
+.tabla2 td tr img{
+    width: 15%;
+    height: 15%;
     margin-left: 2%;
     margin-right: 2%;
 }

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link th:href="@{/css/personal.css}" rel="stylesheet" />
     <script th:src="@{/js/personal.js}" type="text/javascript"></script>
-    <title>LISTAR USUARIOS</title>
+    <title>BUSCAR USUARIOS</title>
 </head>
 
 <body>
@@ -17,7 +17,6 @@
     <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
 
     <a id="homeBtn" th:href="@{/usuario}"><img id="home-icon" src="/img/home.png"></a>
-    <a id="searchBtn" th:href="@{/buscar}"><img id="search-icon" src="/img/search.png"></a>
 
     <div id="menu-index-user-container" th:style="${isAdmin}?'width: 530px':'width: 345px'" class="menu-container">
         <h1 class="tituloForm">BIENVENID@</h1>
@@ -29,6 +28,18 @@
                     CUENTAS|</a>
                 <a th:href="@{/gastos/}">|GASTOS|</a>
                 <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
+            </ul>
+        </div>
+    </div>
+
+    <div id="busqueda-user-container" class="menu-container">
+        <h1 class="tituloForm">BUSCAR</h1>
+        <div id="busqueda-user" class="menu">
+            <ul>
+                <form th:action="@{/buscar}">
+                    <input type="text" name="busqueda" placeholder="Buscar">
+                    <input type="submit" value="Buscar">
+                </form>
             </ul>
         </div>
     </div>

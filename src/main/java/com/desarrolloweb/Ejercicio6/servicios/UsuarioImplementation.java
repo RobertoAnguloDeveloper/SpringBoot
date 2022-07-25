@@ -28,6 +28,17 @@ public class UsuarioImplementation implements ServicioUsuario{
     }
 
     @Override
+    public Usuario buscarPorEmail(String email) {
+        Iterable<Usuario> usuarios = usuarioDAO.findAll();
+        for (Usuario usuario : usuarios) {
+            if (usuario.getEmail().equals(email)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    @Override
     @Transactional
     public boolean verificarUsuario(Usuario usuario) {
         return usuarioDAO.existsById(usuario.getCedula());
@@ -46,7 +57,6 @@ public class UsuarioImplementation implements ServicioUsuario{
             return "error";
         }
     }
-
 
     @Override
     @Transactional

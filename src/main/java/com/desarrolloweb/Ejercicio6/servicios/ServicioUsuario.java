@@ -7,6 +7,7 @@ import com.desarrolloweb.Ejercicio6.modelo.entidades.Usuario;
 public interface ServicioUsuario {
     public boolean agregar(Usuario usuario);
     public Usuario buscar(String id);
+    public Usuario buscarPorEmail(String email);
     public boolean verificarUsuario(Usuario usuario);
     public String verificarRol(Usuario usuario);
     public boolean editar(Usuario usuario);

@@ -19,7 +19,7 @@ public class ControladorUsuario {
     private Usuario usuario;
     private String rol;
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String index() {
         return "/";
     }
@@ -29,31 +29,6 @@ public class ControladorUsuario {
         model.addAttribute("usuario", usuario);
         model.addAttribute("isAdmin", this.rol);
         return "/usuario/index";
-    }
-
-    @RequestMapping("/cuenta")
-    public String cuenta(Model model) {
-        model.addAttribute("usuario", this.usuario);
-        model.addAttribute("isAdmin", this.rol);
-        return "/usuario/editar";
-    }
-
-    @PostMapping("/cuenta")
-    public String editarCuenta(Usuario usuario, Model model) {
-        usuario.setCedula(this.usuario.getCedula());
-        this.usuario = usuario;
-        this.usuarioService.editar(usuario);
-        model.addAttribute("usuario", this.usuario);
-        model.addAttribute("isAdmin", this.rol);
-        return "/usuario/index";
-    }
-
-    @RequestMapping("/listarCuentas")
-    public String listarCuentas(Model model) {
-        model.addAttribute("usuario", this.usuario);
-        model.addAttribute("isAdmin", this.rol);
-        model.addAttribute("usuarios", this.usuarioService.listar());
-        return "/usuario/listar";
     }
 
     @PostMapping("/login")
@@ -92,8 +67,84 @@ public class ControladorUsuario {
     public String agregar(Usuario usuario, Model model) {
         this.usuario = usuario;
         usuarioService.agregar(usuario);
-        return "redirect:/usuario/";
+        if(usuarioService.verificarRol(usuario) == "admin"){
+            this.rol = "true";
+        }else{
+            this.rol = "false";
+        }
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("isAdmin", this.rol);
+        return "/usuario/index";
     }
+
+    @RequestMapping("/cuenta")
+    public String cuenta(Model model) {
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("isAdmin", this.rol);
+        return "/usuario/editar";
+    }
+
+    @PostMapping("/cuenta")
+    public String editarCuenta(Usuario usuario, Model model) {
+        usuario.setCedula(this.usuario.getCedula());
+        this.usuario = usuario;
+        this.usuarioService.editar(usuario);
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("isAdmin", this.rol);
+        return "/usuario/index";
+    }
+
+    @PostMapping("/editar")
+    public String editarCuentas(Usuario usuario, Model model) {
+        
+        Usuario usuarioAEditar = this.usuarioService.buscar(usuario.getCedula());
+
+        usuarioAEditar.setClave(usuario.getClave());
+        usuarioAEditar.setNombre(usuario.getNombre());
+        usuarioAEditar.setTelefono(usuario.getTelefono());
+        usuarioAEditar.setEmail(usuario.getEmail());
+
+        this.usuarioService.editar(usuarioAEditar);
+
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("isAdmin", this.rol);
+
+        return "/usuario/index";
+    }
+
+    @PostMapping("/eliminar")
+    public String eliminarCuenta(Usuario usuario, Model model) {
+        this.usuarioService.eliminar(usuario.getCedula());
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("isAdmin", this.rol);
+        return "/usuario/index";
+    }
+
+    @RequestMapping("/listarCuentas")
+    public String listarCuentas(Model model) {
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("isAdmin", this.rol);
+        model.addAttribute("usuarios", this.usuarioService.listar());
+        return "/usuario/listar";
+    }
+
+    @RequestMapping("/buscar")
+    public String buscar(Usuario usuario, Model model) {
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("isAdmin", this.rol);
+        model.addAttribute("usuarios", this.usuarioService.listar());
+        // model.addAttribute("usuarioBuscado", this.usuarioService.buscar(usuario.getCedula()));
+        return "/usuario/buscar";
+    }
+
+    @PostMapping("/buscar")
+    public String buscarCuenta(Usuario usuario, Model model) {
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("isAdmin", this.rol);
+        model.addAttribute("usuarioBuscado", this.usuarioService.buscar(usuario.getCedula()));
+        return "/usuario/buscar";
+    }
+
 
 
 
