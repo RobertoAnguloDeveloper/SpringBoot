@@ -1,4 +1,4 @@
-package com.desarrolloweb.Ejercicio6;
+package com.desarrolloweb.Ejercicio6.configuraciones;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

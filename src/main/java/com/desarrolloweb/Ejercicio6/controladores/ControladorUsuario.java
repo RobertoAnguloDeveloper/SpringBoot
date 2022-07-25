@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.desarrolloweb.Ejercicio6.modelo.entidades.Usuario;
+import com.desarrolloweb.Ejercicio6.servicios.ServicioEmail;
 import com.desarrolloweb.Ejercicio6.servicios.ServicioUsuario;
 
 @Controller
@@ -18,6 +19,9 @@ public class ControladorUsuario {
     private ServicioUsuario usuarioService;
     private Usuario usuario;
     private String rol;
+
+    @Autowired
+	private ServicioEmail servicioEmail;
 
     @GetMapping("/")
     public String index() {
@@ -56,13 +60,11 @@ public class ControladorUsuario {
             }
     }
 
-    /*th:ref to usuario/agregar.html */
     @GetMapping("/usuario/agregar")
     public String agregarForm() {
         return "usuario/agregar";
     }
 
-    /*th:ref to usuario/agregar.html */
     @PostMapping("/usuario/agregar")
     public String agregar(Usuario usuario, Model model) {
         this.usuario = usuario;
@@ -129,11 +131,10 @@ public class ControladorUsuario {
     }
 
     @RequestMapping("/buscar")
-    public String buscar(Usuario usuario, Model model) {
+    public String buscar(Model model) {
         model.addAttribute("usuario", this.usuario);
         model.addAttribute("isAdmin", this.rol);
         model.addAttribute("usuarios", this.usuarioService.listar());
-        // model.addAttribute("usuarioBuscado", this.usuarioService.buscar(usuario.getCedula()));
         return "/usuario/buscar";
     }
 
@@ -141,35 +142,39 @@ public class ControladorUsuario {
     public String buscarCuenta(Usuario usuario, Model model) {
         model.addAttribute("usuario", this.usuario);
         model.addAttribute("isAdmin", this.rol);
-        model.addAttribute("usuarioBuscado", this.usuarioService.buscar(usuario.getCedula()));
-        return "/usuario/buscar";
+        Usuario usuarioBuscado = this.usuarioService.buscar(usuario.getCedula());
+        if(usuarioBuscado != null){
+            model.addAttribute("usuarioBuscado", usuarioBuscado);
+            return "/usuario/buscar";
+        }else{
+            model.addAttribute("usuarioBuscado", null);
+            return "/usuario/buscar";
+        }
     }
 
+    @RequestMapping("/recoverypass")
+    public String recoverypass(Model model) {
+        return "/usuario/recoverypass";
+    }
 
+    @PostMapping("/recoverypass")
+    public String recoverypass(Usuario usuario, Model model) {
+        Usuario usuarioBuscado = this.usuarioService.buscar(usuario.getCedula());
+        if(usuarioBuscado != null){
+            String clave = usuarioBuscado.getClave();
+            String email = usuarioBuscado.getEmail();
+            String asunto = "Recuperación de contraseña";
+            String mensaje = "Su contraseña es: " + clave;
 
-
-    // /*th:ref to /datosEstudiante.html */
-    // @GetMapping("/datosEstudiante")
-    // public String datosEstudiante(Model model) {
-    //     return "datosEstudiante";
-    // }
+            servicioEmail.enviarEmail(email, asunto, mensaje);
+            model.addAttribute("usuarioBuscado", usuarioBuscado);
+            return "/usuario/recoverypass";
+        }else{
+            model.addAttribute("usuarioBuscado", null);
+            return "/usuario/recoverypass";
+        }
+    }
     
-
-    // /*th:ref to usuario/iniciar_sesion.html */
-    // @PostMapping("/usuario/iniciar_sesion")
-    // public String iniciarSesion(Model model) {
-    //     var usuario = new Usuario();
-    //     model.addAttribute("usuario", usuario);
-    //     return "usuario/iniciar_sesion";
-    // }
-
-    // /*GetMapping th:ref to usuario/cerrar_sesion.html */
-    // @GetMapping("/usuario/cerrar_sesion")
-    // public String cerrarSesion(Model model) {
-    //     var usuario = new Usuario();
-    //     model.addAttribute("usuario", usuario);
-    //     return "usuario/cerrar_sesion";
-    // }
 
     // /*PostMapping th:ref to usuario/recordar_pass.html */
     // @PostMapping("/usuario/recordar_pass")

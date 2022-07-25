@@ -36,54 +36,56 @@
         <h1 class="tituloForm">BUSCAR</h1>
         <div id="busqueda-user" class="menu">
             <ul>
-                <form th:action="@{/buscar}">
-                    <input type="text" name="busqueda" placeholder="Buscar">
+                <form th:action="@{/buscar}" method="post" th:object="${usuario}">
+                    <input type="text" th:name="cedula" placeholder="Buscar">
                     <input type="submit" value="Buscar">
                 </form>
             </ul>
         </div>
     </div>
-    
+
     <div id="listaUsuarios">
         <h2 class="tituloForm">USUARIOS</h2>
-        
-            <table class="tabla2">
-                <tr>
-                    <th>#</th>
-                    <th>Cédula</th>
-                    <th>Clave</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Acciones</th>
-                </tr>
 
-                <tr th:each="usuario, i : ${usuarios}">
-                    <form th:action="@{/editar}" th:object="${usuario}" th:name="'e'+${i.index}" th:id="'e'+${i.index}" method="post">
-                        <td th:text="${i.count}" style="font-weight: bold"></td>
-                        <td><input type="text" th:id="'cedula' + ${i.index}" th:name="'cedula' + ${i.index}" th:value="${i.current.cedula}" disabled></td>
-                        <td><input type="text" th:id="'clave' + ${i.index}" th:name="'clave' + ${i.index}" th:value="${i.current.clave}" disabled></td>
-                        <td><input type="text" th:id="'nombre' + ${i.index}" th:name="'nombre' + ${i.index}" th:value="${i.current.nombre}" disabled></td>
-                        <td><input type="text" th:id="'email' + ${i.index}" th:name="'email' + ${i.index}" th:value="${i.current.email}" disabled></td>
-                        <td><input type="text" th:id="'telefono' + ${i.index}" th:name="'telefono' + ${i.index}" th:value="${i.current.telefono}" disabled></td>
-                        <td>
-                            <script th:inline="javascript">
-                                ids[[${ i.index }]] = ['clave[[${i.index}]]', 'nombre[[${i.index}]]', 'email[[${i.index}]]', 'telefono[[${i.index}]]'];
-                                editIds[[${ i.index }]] = ['e[[${i.index}]]','cedula[[${i.index}]]', 'clave[[${i.index}]]', 'nombre[[${i.index}]]', 'email[[${i.index}]]', 'telefono[[${i.index}]]'];
-                                delIds[[${ i.index }]] = ['d[[${i.index}]]', 'e[[${i.index}]]','cedula[[${i.index}]]', 'clave[[${i.index}]]', 'nombre[[${i.index}]]', 'email[[${i.index}]]', 'telefono[[${i.index}]]'];
-                            </script>
-                            <a href='#' th:onclick="'enableInputs(ids'+${i.index}+');'"><img src='../img/edit.png'></a>
-                            <a href='#' th:onclick="'userUpdateDBSpring(editIds'+${i.index}+');'"> <img src='../img/save.png'></a>
-                            <form th:action="@{/eliminar}" th:object="${usuario}" th:name="'d'+${i.index}" th:id="'d'+${i.index}" method="post">
-                                
-                                <a href='#' th:onclick="'userDeleteDBSpring(delIds'+${i.index}+');'"><img src='../img/erase.png'></a></form>
-                        </td>
+        <table class="tabla2">
+            <tr>
+                <th>#</th>
+                <th>Cédula</th>
+                <th>Clave</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+            <tr th:if="${usuarioBuscado} != null">
+                <form th:action="@{/editar}" th:object="${usuarioBuscado}" th:name="e" th:id="e" method="post">
+                    <td th:text="1" style="font-weight: bold"></td>
+                    <td><input type="text" th:id="cedula" th:name="cedula" th:value="${usuarioBuscado.cedula}" disabled>
+                    </td>
+                    <td><input type="text" th:id="clave" th:name="clave" th:value="${usuarioBuscado.clave}" disabled>
+                    </td>
+                    <td><input type="text" th:id="nombre" th:name="nombre" th:value="${usuarioBuscado.nombre}" disabled>
+                    </td>
+                    <td><input type="text" th:id="email" th:name="email" th:value="${usuarioBuscado.email}" disabled>
+                    </td>
+                    <td><input type="text" th:id="telefono" th:name="telefono" th:value="${usuarioBuscado.telefono}"
+                            disabled></td>
+                    <td>
+                        <script>
+                            ids = ['clave', 'nombre', 'email', 'telefono'];
+                            editIds = ['e', 'cedula', 'clave', 'nombre', 'email', 'telefono'];
+                            delIds = ['d', 'e', 'cedula', 'clave', 'nombre', 'email', 'telefono'];
+                        </script>
+                        <a href='#' onclick="enableInputs(ids);"><img src='../img/edit.png'></a>
+                        <a href='#' onclick="userUpdateDBSpring(editIds);"> <img src='../img/save.png'></a>
+                        <form th:action="@{/eliminar}" th:object="${usuarioBuscado}" th:name="d" th:id="d"
+                            method="post">
+                            <a href='#' onclick="userDeleteDBSpring(delIds);"><img src='../img/erase.png'></a>
+                        </form>
+                    </td>
                 </form>
-                            
-                </tr>
-
-            </table>
-       
+            </tr>
+        </table>
     </div>
 
     <footer id="footer">

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link th:href="@{/css/personal.css}" rel="stylesheet" />
     <script th:src="@{/js/personal.js}" type="text/javascript"></script>
-    <title>Log in</title>
+    <title>RECUPERAR CLAVE</title>
 </head>
 
 <body>
@@ -15,7 +15,6 @@
         <h1>&lt; DESARROLLO WEB &gt;</h1>
     </header>
     <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
-
 
     <div id="menu-ppal-container" class="menu-container">
         <h1 class="tituloForm">BIENVENID@</h1>
@@ -26,42 +25,33 @@
         </div>
     </div>
 
-    <form th:action="@{/login}" method="post" id="log-in" class="contenedorLogin" th:object="${usuario}">
+    <form th:action="@{/recoverypass}" method="post" id="log-in" class="contenedorLogin" th:object="${usuario}">
         <a id="btn-x" onclick="hideElement('log-in');">x</a>
         <table>
             <tr>
-                <h2 class="tituloForm">INICIAR SESION</h2>
+                <h2 class="tituloForm">RECUPERAR CONTRASEÑA</h2>
             </tr>
             <tr>
                 <center>
-                    <input type="text" name="cedula" placeholder="Introduzca su Cédula">
-                    <input type="password" name="clave" placeholder="Introduzca su Contraseña">
+                    <label for="cedula">Ingrese su cédula para enviarle un correo con la clave</label>
+                    <input type="text" name="cedula" placeholder="Introduzca su Cédula" required>
                 </center>
             </tr>
             <tr>
                 <center>
                     <input type="submit" id="loginBtn" name="sesion" value="Iniciar sesión">
-                    
-                    <a id="siginBtn" name="registro" th:href="@{/usuario/agregar}">Registrarse</a>
-
-                    <a id="recoveryPass" th:href="@{/recoverypass}">Olvidaste tu contraseña?</a>
                 </center>
             </tr>
         </table>
     </form>
 
-    <div id="studentData" class="cuadroInfo">
-        <h3>EJERCICIO 6</h3>
-        <br>
-        <h3>Integrantes de CIPA</h3>
-        <p>ROBERTO CARLOS ANGULO TINOCO COD:7502010009</p>
-        <p>VINCENT ARTURO ROLONG MARQUEZ COD:7502010020</p>
-        <br>
-        <h3>Tutor</h3>
-        <p>JHON CARLOS ARRIETA ARRIETA</p>
-        <br>
-        <h3>Asignaturas</h3>
-        <p>DESARROLLO DE SOFTWARE WEB & BASES DE DATOS II</p>
+    <div id="studentDataRecovery" class="cuadroInfo">
+        <div th:if="${usuarioBuscado} != null">
+            <h3>HEMOS ENVIADO UN CORREO A
+                <h2 th:text="${usuarioBuscado.email}"></h2>
+            </h3>
+        </div>
+    
     </div>
 
     <footer id="footer">
