@@ -387,7 +387,18 @@
 
 #studentDataRecovery h3{
     width: 100%;
+    font-weight: bold;
     color: #ff0000;
+    text-shadow: 0.5px 1px 1px rgb(255, 255, 255);
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+}
+
+#studentDataRecovery h2{
+    width: 100%;
+    color: #000000;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
 }
 
 .popup{

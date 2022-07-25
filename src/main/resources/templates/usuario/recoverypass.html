@@ -39,7 +39,7 @@
             </tr>
             <tr>
                 <center>
-                    <input type="submit" id="loginBtn" name="sesion" value="Iniciar sesión">
+                    <input type="submit" id="recoveryBtn" name="recovery" value="Enviar solicitud">
                 </center>
             </tr>
         </table>
@@ -47,8 +47,8 @@
 
     <div id="studentDataRecovery" class="cuadroInfo">
         <div th:if="${usuarioBuscado} != null">
-            <h3>HEMOS ENVIADO UN CORREO A
-                <h2 th:text="${usuarioBuscado.email}"></h2>
+            <h2>HEMOS ENVIADO UN CORREO A
+                <h3 th:text="${mail}"></h2>
             </h3>
         </div>
     

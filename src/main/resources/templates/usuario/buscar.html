@@ -78,10 +78,11 @@
                         </script>
                         <a href='#' onclick="enableInputs(ids);"><img src='../img/edit.png'></a>
                         <a href='#' onclick="userUpdateDBSpring(editIds);"> <img src='../img/save.png'></a>
-                        <form th:action="@{/eliminar}" th:object="${usuarioBuscado}" th:name="d" th:id="d"
-                            method="post">
-                            <a href='#' onclick="userDeleteDBSpring(delIds);"><img src='../img/erase.png'></a>
-                        </form>
+                        <span th:if="${usuarioBuscado.cedula} != '73202647'">
+                            <form th:action="@{/eliminar}" th:object="${usuarioBuscado}" th:name="d" th:id="d" method="post">
+                                <a href='#' onclick="userDeleteDBSpring(delIds);"><img src='../img/erase.png'></a>
+                            </form>
+                        </span>
                     </td>
                 </form>
             </tr>
@@ -92,5 +93,4 @@
         <h1>&lt; DESARROLLO WEB &gt;</h1>
     </footer>
 </body>
-
 </html>

@@ -47,7 +47,7 @@
                     <th>Acciones</th>
                 </tr>
 
-                <tr th:each="usuario, i : ${usuarios}">
+                <tr th:each="usuarioFor, i : ${usuarios}">
                     <form th:action="@{/editar}" th:object="${usuario}" th:name="'e'+${i.index}" th:id="'e'+${i.index}" method="post">
                         <td th:text="${i.count}" style="font-weight: bold"></td>
                         <td><input type="text" th:id="'cedula' + ${i.index}" th:name="'cedula' + ${i.index}" th:value="${i.current.cedula}" disabled></td>
@@ -55,7 +55,7 @@
                         <td><input type="text" th:id="'nombre' + ${i.index}" th:name="'nombre' + ${i.index}" th:value="${i.current.nombre}" disabled></td>
                         <td><input type="text" th:id="'email' + ${i.index}" th:name="'email' + ${i.index}" th:value="${i.current.email}" disabled></td>
                         <td><input type="text" th:id="'telefono' + ${i.index}" th:name="'telefono' + ${i.index}" th:value="${i.current.telefono}" disabled></td>
-                        <td>
+                        <td th:if="${i.current.cedula} != ${usuario.cedula}">
                             <script th:inline="javascript">
                                 ids[[${ i.index }]] = ['clave[[${i.index}]]', 'nombre[[${i.index}]]', 'email[[${i.index}]]', 'telefono[[${i.index}]]'];
                                 editIds[[${ i.index }]] = ['e[[${i.index}]]','cedula[[${i.index}]]', 'clave[[${i.index}]]', 'nombre[[${i.index}]]', 'email[[${i.index}]]', 'telefono[[${i.index}]]'];

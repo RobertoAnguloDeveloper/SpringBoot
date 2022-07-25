@@ -163,11 +163,13 @@ public class ControladorUsuario {
         if(usuarioBuscado != null){
             String clave = usuarioBuscado.getClave();
             String email = usuarioBuscado.getEmail();
+            String mailEncoded = email.substring(0, email.length()/2)+"*".repeat(email.length()/2);
             String asunto = "Recuperación de contraseña";
             String mensaje = "Su contraseña es: " + clave;
 
             servicioEmail.enviarEmail(email, asunto, mensaje);
             model.addAttribute("usuarioBuscado", usuarioBuscado);
+            model.addAttribute("mail", mailEncoded);
             return "/usuario/recoverypass";
         }else{
             model.addAttribute("usuarioBuscado", null);
