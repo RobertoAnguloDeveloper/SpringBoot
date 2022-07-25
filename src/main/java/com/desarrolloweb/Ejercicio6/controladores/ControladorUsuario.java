@@ -17,8 +17,8 @@ public class ControladorUsuario {
 
     @Autowired
     private ServicioUsuario usuarioService;
-    private Usuario usuario;
-    private String rol;
+    public static Usuario usuario;
+    public static String rol;
 
     @Autowired
 	private ServicioEmail servicioEmail;

@@ -331,3 +331,73 @@
 
         window.location.href = "../../controller/ControladorGasto.php?eliminar&"+request;
     }
+
+    function gastoUpdateDBSpring(ids){
+        let values = [];
+        let request = "";
+        
+        var formularioAEditar = document.getElementById(ids[0]);
+        
+        for (var i = 1, j = 0; i < ids.length; i++, j++) {
+            values[j] = document.getElementById(ids[i]).value;
+        }
+
+        for (var i = 1; i < ids.length; i++) {
+            ids[i] = ids[i].replace(/[0-9]/g, '');
+        }
+
+        // // //Imprime values[i] por consola
+        // // for (var i = 0; i < ids.length; i++) {
+        // //     console.log(ids[i] + ": " + values[i]);
+        // // }
+
+        //Cambia los name de los formularios para enviar al controlador
+        for (var i = 1; i < ids.length; i++) {
+            formularioAEditar.elements[i].name = ids[i];
+        }
+
+        //Habilita los inputs
+        for (var i = 0; i < ids.length; i++) {
+            formularioAEditar.elements[i].disabled = false;
+        }
+
+        //Envia el formulario
+        formularioAEditar.submit();
+    }
+
+    function gastoDeleteDBSpring(ids){
+        let values = [];
+        let request = "";
+
+        values[0] = ids[0];
+        values[1] = ids[1];
+
+        var formularioConDatos = document.getElementById(ids[1]);
+        var formularioAEnviar = document.getElementById(ids[0]);
+
+        for (var i = 0, j = 2; j < ids.length; i++, j++) {
+            values[i] = document.getElementById(ids[j]).value;
+        }
+
+        //Elimina las dos primeras posiciones del array ids
+        ids.splice(0, 2);
+
+        for (var i = 0; i < ids.length; i++) {
+            ids[i] = ids[i].replace(/[0-9]/g, '');
+        }
+
+        //Cambia los name de los formularios para enviar al controlador
+        for (var i = 0, j = 1; i < ids.length; i++, j++) {
+            formularioConDatos.elements[j].name = ids[i];
+        }
+
+        //Habilita los inputs
+        for (var i = 0; i < formularioConDatos.elements.length; i++) {
+            formularioConDatos.elements[i].disabled = false;
+        }
+        
+        formularioConDatos.action = "gasto/eliminar";
+
+        //Envia el formulario
+        formularioConDatos.submit();
+    }

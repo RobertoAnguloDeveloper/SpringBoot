@@ -130,10 +130,9 @@
     text-shadow: 1.5px 1px 5px #000;
 }
 
-#searchBtn img{
+.btnRight img{
     width: 36px;
     margin-top: 100px;
-    margin-left: 690px;
     position: absolute;
     z-index: 100;
     background-color: #ffc200;
@@ -142,13 +141,30 @@
     padding: 5px;
 }
 
-#searchBtn img:hover{
+.btnRight img:hover{
     background-color: #ffffff;
     box-shadow: 0px 0px 5px #000;
     color: #fff;
     border-radius: 30px;
     text-shadow: 1.5px 1px 5px #000;
 }
+
+#addBtn img{
+    margin-left: 690px;
+}
+
+#listBtn img{
+    margin-left: 745px;
+}
+
+#searchBtn img{
+    margin-left: 800px;
+}
+
+#searchBtnUser img{
+    margin-left: 690px;
+}
+
 
 #sesion{
     position: absolute;
@@ -256,6 +272,11 @@
     text-shadow: 1.5px 1px 5px #000;
 }
 
+#menu-index-gasto-container{
+    width: 345px;
+    margin-top: 68px;
+}
+
 #menu-agregar-container{
     width: 400px;
 }
@@ -299,6 +320,30 @@
 }
 
 #busqueda-user input[type="submit"]{
+    display: inline-block;
+    width: 60px;
+    padding: 5px;
+    margin-right: unset;
+}
+
+#busqueda-user-gasto-container{
+    width: 23.4%;
+    margin-left: 61%;
+    margin-top: 6.75%;
+    padding-top: unset;
+    padding-bottom: 0.3%;
+}
+
+#busqueda-user-gasto-container h1{
+    display: inline-block;
+}
+
+#busqueda-user-gasto input[type="text"]{
+    display: inline-block;
+    width: 200px;
+}
+
+#busqueda-user-gasto input[type="submit"]{
     display: inline-block;
     width: 60px;
     padding: 5px;
@@ -586,18 +631,24 @@
     width: 50px;
 }
 
-#listaUsuarios{
-    width: 950px;
+.listaUsuarios{
+    width: 80%;
     padding: 1%;
-    display: block;
     position: absolute;
-    top: 35%;
+    top: 36%;
     left: 50%;
     transform: translate(-50%,-50%);
     border: 2px solid black;
     box-sizing: border-box;
     background-color: rgba(255, 230, 0,0.697);
     border-radius: 10px;
+}
+
+#usuariosBuscar{
+    position: absolute;
+    top: 31%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .tabla2{
@@ -694,17 +745,20 @@
     margin-right: 2%;
 }
 
-#listaGastos{
-    width: 100%;
-    height: 100%;
+.listaGastos{
+    width: 80%;
     padding: 1%;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     border: 2px solid black;
     box-sizing: border-box;
     background-color: rgba(255, 230, 0,0.697);
     border-radius: 10px;
 }
 
-#listaGastos input[name="id"]{
+.listaGastos input[name="id"]{
     width: 166px;
     margin: unset;
     display: inline-block;
@@ -714,7 +768,7 @@
     transform: unset;
 }
 
-#listaGastos button{
+.listaGastos button{
     width: 40px;
     padding-top: 10%;
     border-radius: 30px;
@@ -723,12 +777,30 @@
     transition: box-shadow 0.1s ease-in-out;
 }
 
-#listaGastos button:hover{
+.listaGastos button:hover{
     width: 40px;
     padding-top: 10%;
     box-shadow: 0 0 1px 0 #ffc200 inset, 0 1px 1px 1px #ffc200;
     color: #ffc200;
     cursor: pointer;
+}
+
+#gastosUsuario{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#gastoCedula{
+    margin-top: 2.5%;
+}
+
+#searchInput{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .tituloForm{

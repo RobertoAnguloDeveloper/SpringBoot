@@ -1,13 +1,17 @@
 package com.desarrolloweb.Ejercicio6.servicios;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import com.desarrolloweb.Ejercicio6.modelo.crud.CrudGasto;
+import com.desarrolloweb.Ejercicio6.modelo.crud.CrudUsuario;
 import com.desarrolloweb.Ejercicio6.modelo.entidades.Gasto;
+import com.desarrolloweb.Ejercicio6.modelo.entidades.Usuario;
 
 @Service
 public class GastoImplementation implements ServicioGasto{
@@ -25,6 +29,20 @@ public class GastoImplementation implements ServicioGasto{
     @Transactional
     public Gasto buscar(String id) {
         return gastoDAO.findById(id).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public List<Gasto> buscarPorCedula(String cedula){
+        List<Gasto> gastos = (List<Gasto>)gastoDAO.findAll();
+        List<Gasto> gastosFiltrados = new ArrayList<>();
+        for(Gasto gasto : gastos){
+            String cedulaUsuario = gasto.getUsuario_id();
+            if(cedulaUsuario.equals(cedula)){
+                gastosFiltrados.add(gasto);
+            }
+        }
+        return gastosFiltrados;
     }
 
     @Override

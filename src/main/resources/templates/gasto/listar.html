@@ -5,34 +5,89 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link th:href="@{/css/personal.css}" rel="stylesheet" />
+    <script th:src="@{/js/personal.js}" type="text/javascript"></script>
     <title>LISTAR GASTOS</title>
 </head>
 <body>
-    <h1>LISTAR</h1>
-    <table class="tabla2">
-        <tr>
-            <th>ID</th>
-            <th>USUARIO ID</th>
-            <th>FECHA</th>
-            <th>VALOR TOTAL SIN IVA</th>
-            <th>IVA TOTAL</th>
-            <th>VALOR TOTAL CON IVA</th>
-            <th>NOMBRE DEL GASTO</th>
-            <th>LUGAR</th>
-            <th>DESCRIPCION</th>
-        </tr>
-        <tr th:each="gasto : ${gastos}">
-            <td th:text="${gasto.id}"></td>
-            <td th:text="${gasto.usuario_id}"></td>
-            <td th:text="${gasto.fecha}"></td>
-            <td th:text="${gasto.valor_total_sin_iva}"></td>
-            <td th:text="${gasto.iva_total}"></td>
-            <td th:text="${gasto.valor_total_con_iva}"></td>
-            <td th:text="${gasto.nombre_gasto}"></td>
-            <td th:text="${gasto.lugar}"></td>
-            <td th:text="${gasto.descripcion}"></td>
-        </tr>
-    </table>
-    <a th:href="@{/gasto/index}">Regresar gasto</a>
+    <header id="header">
+        <h1>&lt; DESARROLLO WEB &gt;</h1>
+    </header>
+    <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
+
+    <a id="homeBtn" th:href="@{/usuario}"><img id="home-icon" src="/img/home.png"></a>
+    <a id="addBtn" class="btnRight" th:href="@{gasto/agregar}"><img id="add-icon" src="/img/add.png"></a>
+    <a id="listBtn" class="btnRight" th:href="@{gasto/listar}"><img id="list-icon" src="/img/list.png"></a>
+    <a id="searchBtn" class="btnRight" th:href="@{gasto/buscar}"><img id="search-icon" src="/img/search.png"></a>
+
+    <div id="menu-index--container" th:style="${isAdmin}?'width: 530px':'width: 345px'" class="menu-container">
+        <h1 class="tituloForm">BIENVENID@</h1>
+        <p id="nombreUsuario" th:text="${usuario.nombre}"></p>
+        <div id="menu-index-user" class="menu">
+            <ul>
+                <a th:href="@{/cuenta}">|DATOS DE CUENTA|</a>
+                <a th:href="@{/listarCuentas}" th:style="${isAdmin}?'display:inline-block':'display:none'">|ADMINISTRAR
+                    CUENTAS|</a>
+                <a th:href="@{/gasto}">|GASTOS|</a>
+                <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="listaGastos">
+        <h2 class="tituloForm">TUS GASTOS</h2>
+        
+            <table class="tabla2">
+                <tr>
+                    <th>#</th>
+                    <th>ID</th>
+                    <th>USUARIO ID</th>
+                    <th>FECHA</th>
+                    <th>VALOR TOTAL SIN IVA</th>
+                    <th>IVA TOTAL</th>
+                    <th>VALOR TOTAL CON IVA</th>
+                    <th>NOMBRE DEL GASTO</th>
+                    <th>LUGAR</th>
+                    <th>DESCRIPCION</th>
+                    <th>Acciones</th>
+                </tr>
+
+                <tr th:each="gasto, i : ${gastos}">
+                    <form th:action="@{gasto/editar}" th:object="${gasto}" th:name="'e'+${i.index}" th:id="'e'+${i.index}" method="post">
+                        <td th:text="${i.count}" style="font-weight: bold"></td>
+                        <td><input type="text" th:id="'id' + ${i.index}" th:name="'id' + ${i.index}" th:value="${i.current.id}" disabled></td>
+                        <td><input type="text" th:id="'usuario_id' + ${i.index}" th:name="'usuario_id' + ${i.index}" th:value="${i.current.usuario_id}" disabled></td>
+                        <td><input type="text" th:id="'fecha' + ${i.index}" th:name="'fecha' + ${i.index}" th:value="${i.current.fecha}" disabled></td>
+                        <td><input type="text" th:id="'valor_total_sin_iva' + ${i.index}" th:name="'valor_total_sin_iva' + ${i.index}" th:value="${i.current.valor_total_sin_iva}" disabled></td>
+                        <td><input type="text" th:id="'iva_total' + ${i.index}" th:name="'iva_total' + ${i.index}" th:value="${i.current.iva_total}" disabled></td>
+                        <td><input type="text" th:id="'valor_total_con_iva' + ${i.index}" th:name="'valor_total_con_iva' + ${i.index}" th:value="${i.current.valor_total_con_iva}" disabled></td>
+                        <td><input type="text" th:id="'nombre_gasto' + ${i.index}" th:name="'nombre_gasto' + ${i.index}" th:value="${i.current.nombre_gasto}" disabled></td>
+                        <td><input type="text" th:id="'lugar' + ${i.index}" th:name="'lugar' + ${i.index}" th:value="${i.current.lugar}" disabled></td>
+                        <td><input type="text" th:id="'descripcion' + ${i.index}" th:name="'descripcion' + ${i.index}" th:value="${i.current.descripcion}" disabled></td>
+                            <script th:inline="javascript">
+                                ids[[${ i.index }]] = ['usuario_id[[${i.index}]]', 'fecha[[${i.index}]]', 'valor_total_sin_iva[[${i.index}]]',
+                                 'iva_total[[${i.index}]]', 'valor_total_con_iva[[${i.index}]]', 'nombre_gasto[[${i.index}]]', 'lugar[[${i.index}]]',
+                                  'descripcion[[${i.index}]]'];
+                                editIds[[${ i.index }]] = ['e[[${i.index}]]','id[[${i.index}]]', 'usuario_id[[${i.index}]]', 'fecha[[${i.index}]]', 'valor_total_sin_iva[[${i.index}]]',
+                                 'iva_total[[${i.index}]]', 'valor_total_con_iva[[${i.index}]]', 'nombre_gasto[[${i.index}]]', 'lugar[[${i.index}]]',
+                                  'descripcion[[${i.index}]]'];
+                                delIds[[${ i.index }]] = ['d[[${i.index}]]', 'e[[${i.index}]]','id[[${i.index}]]', 'usuario_id[[${i.index}]]', 'fecha[[${i.index}]]',
+                                 'valor_total_sin_iva[[${i.index}]]', 'iva_total[[${i.index}]]', 'valor_total_con_iva[[${i.index}]]', 'nombre_gasto[[${i.index}]]',
+                                  'lugar[[${i.index}]]', 'descripcion[[${i.index}]]'];
+                            </script>
+                        <td>
+                            <a href='#' th:onclick="'enableInputs(ids'+${i.index}+');'"><img src='../img/edit.png'></a>
+                            <a href='#' th:onclick="'gastoUpdateDBSpring(editIds'+${i.index}+');'"> <img src='../img/save.png'></a>
+                            <form th:action="@{gasto/eliminar}" th:object="${gasto}" th:name="'d'+${i.index}" th:id="'d'+${i.index}" method="post">
+                                <a href='#' th:onclick="'gastoDeleteDBSpring(delIds'+${i.index}+');'"><img src='../img/erase.png'></a>
+                            </form>
+                        </td>
+                </form>
+                </tr>
+            </table>
+    </div>
+
+    <footer id="footer">
+        <h1>&lt; DESARROLLO WEB &gt;</h1>
+    </footer>
 </body>
 </html>

@@ -17,7 +17,7 @@
     <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
 
     <a id="homeBtn" th:href="@{/usuario}"><img id="home-icon" src="/img/home.png"></a>
-    <a id="searchBtn" th:href="@{/buscar}"><img id="search-icon" src="/img/search.png"></a>
+    <a id="searchBtnUser" class="btnRight" th:href="@{/buscar}"><img id="search-icon" src="/img/search.png"></a>
 
     <div id="menu-index-user-container" th:style="${isAdmin}?'width: 530px':'width: 345px'" class="menu-container">
         <h1 class="tituloForm">BIENVENID@</h1>
@@ -27,13 +27,13 @@
                 <a th:href="@{/cuenta}">|DATOS DE CUENTA|</a>
                 <a th:href="@{/listarCuentas}" th:style="${isAdmin}?'display:inline-block':'display:none'">|ADMINISTRAR
                     CUENTAS|</a>
-                <a th:href="@{/gastos/}">|GASTOS|</a>
+                    <a th:href="@{/gasto}">|GASTOS|</a>
                 <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
             </ul>
         </div>
     </div>
     
-    <div id="listaUsuarios">
+    <div class="listaUsuarios">
         <h2 class="tituloForm">USUARIOS</h2>
         
             <table class="tabla2">
@@ -64,8 +64,8 @@
                             <a href='#' th:onclick="'enableInputs(ids'+${i.index}+');'"><img src='../img/edit.png'></a>
                             <a href='#' th:onclick="'userUpdateDBSpring(editIds'+${i.index}+');'"> <img src='../img/save.png'></a>
                             <form th:action="@{/eliminar}" th:object="${usuario}" th:name="'d'+${i.index}" th:id="'d'+${i.index}" method="post">
-                                
-                                <a href='#' th:onclick="'userDeleteDBSpring(delIds'+${i.index}+');'"><img src='../img/erase.png'></a></form>
+                                <a href='#' th:onclick="'userDeleteDBSpring(delIds'+${i.index}+');'"><img src='../img/erase.png'></a>
+                            </form>
                         </td>
                 </form>
                             
