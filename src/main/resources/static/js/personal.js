@@ -396,7 +396,7 @@
             formularioConDatos.elements[i].disabled = false;
         }
         
-        formularioConDatos.action = "gasto/eliminar";
+        formularioConDatos.action = "/gasto/eliminar";
 
         //Envia el formulario
         formularioConDatos.submit();
