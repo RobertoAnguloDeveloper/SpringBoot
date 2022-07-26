@@ -12,7 +12,6 @@ import com.desarrolloweb.Ejercicio6.servicios.ServicioEmail;
 import com.desarrolloweb.Ejercicio6.servicios.ServicioUsuario;
 
 @Controller
-
 public class ControladorUsuario {
 
     @Autowired
@@ -172,7 +171,7 @@ public class ControladorUsuario {
             model.addAttribute("mail", mailEncoded);
             return "/usuario/recoverypass";
         }else{
-            model.addAttribute("usuarioBuscado", null);
+            model.addAttribute("noExiste", 1);
             return "/usuario/recoverypass";
         }
     }
