@@ -9,9 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import com.desarrolloweb.Ejercicio6.modelo.crud.CrudGasto;
-import com.desarrolloweb.Ejercicio6.modelo.crud.CrudUsuario;
 import com.desarrolloweb.Ejercicio6.modelo.entidades.Gasto;
-import com.desarrolloweb.Ejercicio6.modelo.entidades.Usuario;
 
 @Service
 public class GastoImplementation implements ServicioGasto{
@@ -57,13 +55,17 @@ public class GastoImplementation implements ServicioGasto{
 
     @Override
     @Transactional
-    public boolean eliminar(String id) {
-        gastoDAO.deleteById(id);
-        if(!gastoDAO.findById(id).isPresent()) {
-            return true;
-        }else {
-            return false;
+    public boolean eliminar(Long id) {
+        List<Gasto> gastosFiltrados = new ArrayList<>();
+    
+        gastosFiltrados = (List<Gasto>)gastoDAO.findAll();
+        for(Gasto gasto : gastosFiltrados){
+            if(gasto.getId().equals(id)){
+                gastoDAO.delete(gasto);
+                return true;
+            }
         }
+        return false;
     }
 
     @Override

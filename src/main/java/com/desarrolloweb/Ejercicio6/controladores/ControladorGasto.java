@@ -23,6 +23,25 @@ public class ControladorGasto {
     private Gasto gasto;
     private Usuario usuario;
 
+    @RequestMapping("gasto/agregar")
+    public String agregar(Model model) {
+        model.addAttribute("gasto", new Gasto());
+        model.addAttribute("usuario", ControladorUsuario.usuario);
+        model.addAttribute("isAdmin", ControladorUsuario.rol);
+        return "gasto/agregar";
+    }
+
+    @PostMapping("/gasto/agregar")
+    public String agregarGasto(Gasto gasto, Model model) {
+        gasto.setUsuario_id(ControladorUsuario.usuario.getCedula());
+        gastoService.agregar(gasto);
+        List<Gasto> gastos = gastoService.buscarPorCedula(ControladorUsuario.usuario.getCedula());
+        model.addAttribute("usuario", ControladorUsuario.usuario);
+        model.addAttribute("isAdmin", ControladorUsuario.rol);
+        model.addAttribute("gastos", gastos);
+        return "gasto/listar";
+    }
+
     @RequestMapping("/gasto")
     public String gastoListar(Model model) {
         gasto = new Gasto();
@@ -42,7 +61,6 @@ public class ControladorGasto {
         return "gasto/buscar";
     }
 
-
     @PostMapping("/gasto/buscar")
     public String gastoBuscar(Usuario usuario, Model model) {
         gasto = new Gasto();
@@ -53,53 +71,33 @@ public class ControladorGasto {
         return "gasto/buscar";
     }
 
-    // /*th:ref to gasto/index.html */
-    // @GetMapping("/gasto/index")
-    // public String index(Model model) {
-    //     var gastos = gastoService.listar();
-    //     model.addAttribute("gastos", gastos);
-    //     return "gasto/index";
-    // }
+    @PostMapping("/gasto/editar")
+    public String gastoEditar(Gasto gasto, Model model) {
+        gastoService.editar(gasto);
+        List<Gasto> gastos = gastoService.buscarPorCedula(ControladorUsuario.usuario.getCedula());
+        model.addAttribute("usuario", ControladorUsuario.usuario);
+        model.addAttribute("isAdmin", ControladorUsuario.rol);
+        model.addAttribute("gastos", gastos);
+        return "gasto/listar";
+    }
 
-    // /*th:ref to gasto/agregar.html */
-    // @PostMapping("/gasto/agregar")
-    // public String agregar(Model model) {
-    //     var gasto = new Gasto();
-    //     model.addAttribute("gasto", gasto);
-    //     return "gasto/agregar";
-    // }
+    @PostMapping("/gasto/eliminar")
+    public String gastoEliminar(Gasto gasto, Model model) {
+        System.out.println("ELIMINANDO------>"+gasto.getId());
+        gastoService.eliminar(gasto.getId());
+        List<Gasto> gastos = gastoService.buscarPorCedula(ControladorUsuario.usuario.getCedula());
+        model.addAttribute("usuario", ControladorUsuario.usuario);
+        model.addAttribute("isAdmin", ControladorUsuario.rol);
+        model.addAttribute("gastos", gastos);
+        return "gasto/listar";
+    }
 
-    // /*th:ref to usuario/buscar.html */
-    // @GetMapping("/gasto/buscar")
-    // public String buscar(Model model) {
-    //     var gasto = new Gasto();
-    //     model.addAttribute("gasto", gasto);
-    //     return "gasto/buscar";
-    // }
-
-    // /*th:ref to gasto/editar.html */
-    // @PostMapping("/gasto/editar")
-    // public String editar(Model model) {
-    //     var gasto = new Gasto();
-    //     model.addAttribute("gasto", gasto);
-    //     return "gasto/editar";
-    // }
-
-    // /*th:ref to gasto/eliminar.html */
-    // @GetMapping("/gasto/eliminar")
-    // public String eliminar(Model model) {
-    //     var gasto = new Gasto();
-    //     model.addAttribute("gasto", gasto);
-    //     return "gasto/eliminar";
-    // }
-
-    // /*th:ref to gasto/listar.html */
-    // @GetMapping("/gasto/listar")
-    // public String listar(Model model) {
-    //     var gastos = gastoService.listar();
-    //     model.addAttribute("gastos", gastos);
-    //     return "gasto/listar";
-    // }
-
-    
+    @RequestMapping("/gasto/listarTodos")
+    public String gastoListarTodos(Model model) {
+        List<Gasto> gastos = gastoService.listar();
+        model.addAttribute("usuario", ControladorUsuario.usuario);
+        model.addAttribute("isAdmin", ControladorUsuario.rol);
+        model.addAttribute("gastos", gastos);
+        return "gasto/listar";
+    }
 }

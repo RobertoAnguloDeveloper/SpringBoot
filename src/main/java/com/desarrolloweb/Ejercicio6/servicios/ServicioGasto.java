@@ -9,6 +9,6 @@ public interface ServicioGasto {
     public Gasto buscar(String id);
     public List<Gasto> buscarPorCedula(String cedula);
     public boolean editar(Gasto gasto);
-    public boolean eliminar(String id);
+    public boolean eliminar(Long id);
     public List<Gasto> listar();
 }

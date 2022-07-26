@@ -14,7 +14,8 @@ public class Gasto implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @Column(name = "id")
+    private Long id;
     // /*ForeignKey JPA Spring boot*/
     // @ManyToOne(fetch = FetchType.LAZY)
     // @JoinColumn(name = "usuario_id")

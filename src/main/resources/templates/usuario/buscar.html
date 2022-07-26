@@ -16,31 +16,33 @@
     </header>
     <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
 
-    <a id="homeBtn" th:href="@{/usuario}"><img id="home-icon" src="/img/home.png"></a>
-
-    <div id="menu-index-user-container" th:style="${isAdmin}?'width: 530px':'width: 345px'" class="menu-container">
-        <h1 class="tituloForm">BIENVENID@</h1>
-        <p id="nombreUsuario" th:text="${usuario.nombre}"></p>
-        <div id="menu-index-user" class="menu">
-            <ul>
-                <a th:href="@{/cuenta}">|DATOS DE CUENTA|</a>
-                <a th:href="@{/listarCuentas}" th:style="${isAdmin}?'display:inline-block':'display:none'">|ADMINISTRAR
-                    CUENTAS|</a>
+    <div id="botonera">
+        <a id="homeBtn" th:href="@{/usuario}"><img id="home-icon" src="/img/home.png"></a>
+        <div id="menu-index-user-container" th:style="${isAdmin}?'width: 530px':'width: 345px'" class="menu-container">
+            <h1 class="tituloForm">BIENVENID@</h1>
+            <p id="nombreUsuario" th:text="${usuario.nombre}"></p>
+            <div id="menu-index-user" class="menu">
+                <ul>
+                    <a th:href="@{/cuenta}">|DATOS DE CUENTA|</a>
+                    <a th:href="@{/listarCuentas}" th:style="${isAdmin}?'display:inline-block':'display:none'">|ADMINISTRAR
+                        CUENTAS|</a>
                     <a th:href="@{/gasto}">|GASTOS|</a>
-                <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
-            </ul>
+                    <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
+                </ul>
+            </div>
         </div>
-    </div>
-
-    <div id="busqueda-user-container" class="menu-container">
-        <h1 class="tituloForm">BUSCAR</h1>
-        <div id="busqueda-user" class="menu">
-            <ul>
-                <form th:action="@{/buscar}" method="post" th:object="${usuario}">
-                    <input type="text" th:name="cedula" placeholder="Buscar">
-                    <input type="submit" value="Buscar">
-                </form>
-            </ul>
+    
+    
+        <div id="busqueda-user-container" class="menu-container">
+            <h1 class="tituloForm">BUSCAR</h1>
+            <div id="busqueda-user" class="menu">
+                <ul>
+                    <form th:action="@{/buscar}" method="post" th:object="${usuario}">
+                        <input type="text" th:name="cedula" placeholder="Buscar">
+                        <input type="submit" value="Buscar">
+                    </form>
+                </ul>
+            </div>
         </div>
     </div>
 

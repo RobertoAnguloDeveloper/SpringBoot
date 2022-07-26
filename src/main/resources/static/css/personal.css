@@ -31,6 +31,7 @@
 
 #footer {
     position: fixed;
+    z-index: -100;
     bottom: 0;
     width: 100%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
@@ -186,7 +187,7 @@
 .menu-container{
     margin-top: 100px;
     margin-left: 150px;
-    position: absolute;    
+    position: absolute;
     z-index: 100;
     border-radius: 5px;
     background-color: #ffe600;
@@ -303,10 +304,12 @@
 }
 
 #busqueda-user-container{
-    width: 19%;
-    margin-left: 61%;
-    margin-top: 6.75%;
-    padding-top: unset;
+    display: inline-block;
+    width: 290px;
+    position: fixed;
+    top: 0;
+    left: 60%;
+    z-index: 100;
     padding-bottom: 0.3%;
 }
 
@@ -327,10 +330,13 @@
 }
 
 #busqueda-user-gasto-container{
-    width: 23.4%;
-    margin-left: 61%;
-    margin-top: 6.75%;
-    padding-top: unset;
+    display: inline-block;
+    width: 355px;
+    margin-right: unset;
+    position: fixed;
+    top: 0;
+    left: 55%;
+    z-index: 100;
     padding-bottom: 0.3%;
 }
 
@@ -632,6 +638,7 @@
 }
 
 .listaUsuarios{
+    display: inline-table;
     width: 80%;
     padding: 1%;
     position: absolute;
@@ -674,14 +681,6 @@
     border: 1px solid rgb(0, 0, 0);
     padding: 2px;
     text-align: center;
-}
-
-.tabla2 input[type="button"]{
-    margin-top: unset;
-    display: inline-block;
-    width: 45%;
-    margin-left: 2%;
-    margin-right: 2%;
 }
 
 .tabla2 input[type="text"]{
@@ -745,13 +744,22 @@
     margin-right: 2%;
 }
 
+#botonera{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+}
+
 .listaGastos{
-    width: 80%;
-    padding: 1%;
+    display: inline-table;
+    width: 70%;
     position: absolute;
-    top: 45%;
+    top: 66%;
     left: 50%;
     transform: translate(-50%,-50%);
+    padding: 1%;
     border: 2px solid black;
     box-sizing: border-box;
     background-color: rgba(255, 230, 0,0.697);
@@ -786,14 +794,20 @@
 }
 
 #gastosUsuario{
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    height: auto;
+    min-height: 50%;
+    overflow: auto;
+    margin-top: 4%;
+    width: 80%;
+    display: block;
 }
 
 #gastoCedula{
-    margin-top: 2.5%;
+    display: inline-table;
+    width: 80%;
+    z-index: -100;
+    margin-top: -5%;
+
 }
 
 #searchInput{
@@ -819,6 +833,16 @@
 
 #regUsuario{
     margin-bottom: 6%;
+}
+
+#gasto-container{
+    margin-top: 5%;
+    width: 20%;
+    height: unset;
+}
+
+#regGasto{
+    height: unset;
 }
 
 #gastoAgregar{

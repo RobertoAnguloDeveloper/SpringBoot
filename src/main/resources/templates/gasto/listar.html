@@ -14,22 +14,24 @@
     </header>
     <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
 
-    <a id="homeBtn" th:href="@{/usuario}"><img id="home-icon" src="/img/home.png"></a>
-    <a id="addBtn" class="btnRight" th:href="@{gasto/agregar}"><img id="add-icon" src="/img/add.png"></a>
-    <a id="listBtn" class="btnRight" th:href="@{gasto/listar}"><img id="list-icon" src="/img/list.png"></a>
-    <a id="searchBtn" class="btnRight" th:href="@{gasto/buscar}"><img id="search-icon" src="/img/search.png"></a>
-
-    <div id="menu-index--container" th:style="${isAdmin}?'width: 530px':'width: 345px'" class="menu-container">
-        <h1 class="tituloForm">BIENVENID@</h1>
-        <p id="nombreUsuario" th:text="${usuario.nombre}"></p>
-        <div id="menu-index-user" class="menu">
-            <ul>
-                <a th:href="@{/cuenta}">|DATOS DE CUENTA|</a>
-                <a th:href="@{/listarCuentas}" th:style="${isAdmin}?'display:inline-block':'display:none'">|ADMINISTRAR
-                    CUENTAS|</a>
-                <a th:href="@{/gasto}">|GASTOS|</a>
-                <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
-            </ul>
+    <div id="botonera">
+        <a id="homeBtn" th:href="@{/usuario}"><img id="home-icon" src="/img/home.png"></a>
+        <a id="addBtn" class="btnRight" th:href="@{/gasto/agregar}"><img id="add-icon" src="/img/add.png"></a>
+        <a id="listBtn" class="btnRight" th:href="@{/gasto/listarTodos}"><img id="list-icon" src="/img/list.png"></a>
+        <a id="searchBtn" class="btnRight" th:href="@{/gasto/buscar}"><img id="search-icon" src="/img/search.png"></a>
+    
+        <div id="menu-index--container" th:style="${isAdmin}?'width: 530px':'width: 345px'" class="menu-container">
+            <h1 class="tituloForm">BIENVENID@</h1>
+            <p id="nombreUsuario" th:text="${usuario.nombre}"></p>
+            <div id="menu-index-user" class="menu">
+                <ul>
+                    <a th:href="@{/cuenta}">|DATOS DE CUENTA|</a>
+                    <a th:href="@{/listarCuentas}" th:style="${isAdmin}?'display:inline-block':'display:none'">|ADMINISTRAR
+                        CUENTAS|</a>
+                    <a th:href="@{/gasto}">|GASTOS|</a>
+                    <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
+                </ul>
+            </div>
         </div>
     </div>
     
@@ -52,7 +54,7 @@
                 </tr>
 
                 <tr th:each="gasto, i : ${gastos}">
-                    <form th:action="@{gasto/editar}" th:object="${gasto}" th:name="'e'+${i.index}" th:id="'e'+${i.index}" method="post">
+                    <form th:action="@{/gasto/editar}" th:object="${gasto}" th:name="'e'+${i.index}" th:id="'e'+${i.index}" method="post">
                         <td th:text="${i.count}" style="font-weight: bold"></td>
                         <td><input type="text" th:id="'id' + ${i.index}" th:name="'id' + ${i.index}" th:value="${i.current.id}" disabled></td>
                         <td><input type="text" th:id="'usuario_id' + ${i.index}" th:name="'usuario_id' + ${i.index}" th:value="${i.current.usuario_id}" disabled></td>
@@ -77,7 +79,7 @@
                         <td>
                             <a href='#' th:onclick="'enableInputs(ids'+${i.index}+');'"><img src='../img/edit.png'></a>
                             <a href='#' th:onclick="'gastoUpdateDBSpring(editIds'+${i.index}+');'"> <img src='../img/save.png'></a>
-                            <form th:action="@{gasto/eliminar}" th:object="${gasto}" th:name="'d'+${i.index}" th:id="'d'+${i.index}" method="post">
+                            <form th:action="@{/gasto/eliminar}" th:object="${gasto}" th:name="'d'+${i.index}" th:id="'d'+${i.index}" method="post">
                                 <a href='#' th:onclick="'gastoDeleteDBSpring(delIds'+${i.index}+');'"><img src='../img/erase.png'></a>
                             </form>
                         </td>

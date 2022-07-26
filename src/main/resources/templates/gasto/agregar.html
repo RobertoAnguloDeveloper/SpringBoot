@@ -16,23 +16,40 @@
     </header>
     <img id="background" src="/img/udcPiedra.jpg" alt="UdC">
 
-    <a id="homeBtn" th:href="@{/}"><img id="home-icon" src="/img/home.png"></a>
+    <a id="homeBtn" th:href="@{/usuario}"><img id="home-icon" src="/img/home.png"></a>
 
-    <form th:action="@{/gasto/agregar}" th:object="${gasto}" method="post" id="sign-in" class="contenedorSignin">
+    <div id="menu-index-user-container" th:style="${isAdmin}?'width: 530px':'width: 345px'" class="menu-container">
+        <h1 class="tituloForm">BIENVENID@</h1>
+        <p id="nombreUsuario" th:text="${usuario.nombre}"></p>
+        <div id="menu-index-user" class="menu">
+            <ul>
+                <a th:href="@{/cuenta}">|DATOS DE CUENTA|</a>
+                <a th:href="@{/listarCuentas}" th:style="${isAdmin}?'display:inline-block':'display:none'">|ADMINISTRAR
+                    CUENTAS|</a>
+                    <a th:href="@{/gasto}">|GASTOS|</a>
+                <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
+            </ul>
+        </div>
+    </div>
+
+    <form th:action="@{/gasto/agregar}" th:object="${gasto}" method="post" id="gasto-container" class="contenedorSignin">
         <a id="btn-x" onclick="hideElement('sign-in');">x</a>
         <table>
             <tr>
                 <br>
             </tr>
             <tr>
-                <h2 id="regUsuario" class="tituloForm">
+                <h2 id="regGasto" class="tituloForm">
                     <center>REGISTRE SU GASTO</center>
                 </h2>
-                <input type="number" id="cedula" name="cedula" th:value="${usuario.cedula}" disabled>
-                <input type="password" id="clace" name="clave" placeholder="Introduzca su Contraseña" required>
-                <input type="email" id="email" name="email" placeholder="Introduzca su email" required>
-                <input type="text" id="nombre" name="nombre" placeholder="Introduzca su nombre completo" required>
-                <input type="number" id="telefono" name="telefono" placeholder="Introduzca su telefono" required>
+                <input type="number" id="usuario_id" name="usuario_id" th:value="${usuario.cedula}" disabled>
+                <input type="date" name="fecha" required>
+                <input type="number" step="0.01" name="valor_total_sin_iva" placeholder="Valor total sin IVA" required>
+                <input type="number" step="0.01" name="iva_total" placeholder="IVA total" required>
+                <input type="number" step="0.01" name="valor_total_con_iva" placeholder="Valor total con IVA" required>
+                <input type="text" name="nombre_gasto" placeholder="Introduzca el nombre del gasto" required>
+                <input type="text" name="lugar" placeholder="Lugar del gasto" required>
+                <input type="text" name="descripcion" placeholder="Descripción del gasto" required>
             <tr>
                 <td>
                     <input type="submit" id="guardar" name="guardar" value="Guardar">
