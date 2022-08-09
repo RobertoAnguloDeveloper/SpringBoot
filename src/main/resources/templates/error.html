@@ -40,9 +40,10 @@
             <tr>
                 <center>
                     <input type="submit" id="loginBtn" name="sesion" value="Iniciar sesión">
+                    
                     <a id="siginBtn" name="registro" th:href="@{/usuario/agregar}">Registrarse</a>
 
-                    <a id="recoveryPass" href="#">Olvidaste tu contraseña?</a>
+                    <a id="recoveryPass" th:href="@{/recoverypass}">Olvidaste tu contraseña?</a>
                 </center>
             </tr>
         </table>

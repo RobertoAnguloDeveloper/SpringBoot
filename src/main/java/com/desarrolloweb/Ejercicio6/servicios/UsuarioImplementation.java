@@ -18,7 +18,12 @@ public class UsuarioImplementation implements ServicioUsuario{
     @Override
     @Transactional
     public boolean agregar(Usuario usuario) {
-        return usuarioDAO.save(usuario) != null;
+        if(usuarioDAO.existsById(usuario.getCedula())) {
+            return false;
+        }else {
+            usuarioDAO.save(usuario);
+            return true;
+        }
     }
 
     @Override
