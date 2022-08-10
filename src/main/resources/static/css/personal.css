@@ -637,10 +637,9 @@
     display: inline-table;
     width: 80%;
     padding: 1%;
-    position: absolute;
-    top: 36%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    position: static;
+    margin-top: 10%;
+    margin-left: 10%;
     border: 2px solid black;
     box-sizing: border-box;
     background-color: rgba(255, 230, 0,0.697);
@@ -655,7 +654,6 @@
 }
 
 .tabla2{
-    margin-top: 2%;
     width: 95%;
     border-collapse: collapse;
     border-style: groove;
@@ -688,7 +686,6 @@
 
 .tabla2 td tr img{
     width: 15%;
-    height: 15%;
     margin-left: 2%;
     margin-right: 2%;
 }
@@ -751,10 +748,9 @@
 .listaGastos{
     display: inline-table;
     width: 70%;
-    position: absolute;
-    top: 66%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    position: static;
+    margin-left: 15%;
+    margin-top: 10%;
     padding: 1%;
     border: 2px solid black;
     box-sizing: border-box;
@@ -823,8 +819,9 @@
     text-align: center;
 }
 
-#tituloGastos, #tituloTusGastos, #tituloTodosGastos{
+#tituloGastos, #tituloTusGastos, #tituloTodosGastos, #usuarios{
     margin-top: 1.5%;
+    margin-bottom: 10px;
 }
 
 #regUsuario{
@@ -832,7 +829,6 @@
 }
 
 #gasto-container{
-    margin-top: 5%;
     width: 20%;
     height: unset;
 }

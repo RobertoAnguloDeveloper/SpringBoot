@@ -1,12 +1,10 @@
 package com.desarrolloweb.Ejercicio6.controladores;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,7 +19,6 @@ public class ControladorGasto {
     @Autowired
     private ServicioGasto gastoService;
     private Gasto gasto;
-    private Usuario usuario;
 
     @RequestMapping("gasto/agregar")
     public String agregar(Model model) {

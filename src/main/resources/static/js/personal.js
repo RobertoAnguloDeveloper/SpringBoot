@@ -345,12 +345,6 @@
         for (var i = 1; i < ids.length; i++) {
             ids[i] = ids[i].replace(/[0-9]/g, '');
         }
-
-        // // //Imprime values[i] por consola
-        // // for (var i = 0; i < ids.length; i++) {
-        // //     console.log(ids[i] + ": " + values[i]);
-        // // }
-
         //Cambia los name de los formularios para enviar al controlador
         for (var i = 1; i < ids.length; i++) {
             formularioAEditar.elements[i].name = ids[i];
