@@ -27,13 +27,10 @@
                 <a th:href="@{/cuenta}">|DATOS DE CUENTA|</a>
                 <a th:href="@{/listarCuentas}" th:style="${isAdmin}?'display:inline-block':'display:none'">|ADMINISTRAR CUENTAS|</a>
                 <a th:href="@{/gasto}">|GASTOS|</a>
-                <a th:href="@{/}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
+                <a th:href="@{/logout}" onclick="this.parentNode.submit();">|CERRAR SESION|</a>
             </ul>
         </div>
     </div>
-
-    
-
 
     <footer id="footer">
         <h1>&lt; DESARROLLO WEB &gt;</h1>

@@ -175,4 +175,11 @@ public class ControladorUsuario {
             return "/usuario/recoverypass";
         }
     }
+
+    @RequestMapping("/logout")
+    public String logout(Model model) {
+        this.usuario = null;
+        this.rol = null;
+        return "redirect:/";
+    }
 }
